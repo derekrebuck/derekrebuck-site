@@ -47,11 +47,11 @@
             align-items: center;
         }
 
-        /* Navigation */
+        /* Navigation Base */
         nav {
             display: flex;
             justify-content: space-between;
-            align-items: flex-end;
+            align-items: flex-end; /* Baseline alignment */
             padding: 40px 0;
             width: 100%;
             position: relative;
@@ -59,7 +59,7 @@
         }
 
         .logo-container img {
-            width: 300px; /* Slightly larger logo */
+            width: 300px;
             height: auto;
             display: block;
         }
@@ -69,22 +69,22 @@
             list-style: none;
             display: flex;
             gap: 40px;
-            padding-bottom: 8px;
+            padding-bottom: 5px; /* Aligns text visually with logo baseline */
         }
 
         .nav-links a {
             color: #95a6b2;
             text-decoration: none;
-            font-weight: 700;
+            font-weight: 500; /* Thinned out the text */
             text-transform: uppercase;
-            font-size: 1.1rem; /* Increased size per your request */
+            font-size: 1.1rem;
             letter-spacing: 1.5px;
             transition: color 0.3s;
         }
 
         .nav-links a:hover { color: #CAC16A; }
 
-        /* Hamburger Icon (Hidden on Desktop) */
+        /* Hamburger Icon */
         .hamburger {
             display: none;
             cursor: pointer;
@@ -100,7 +100,6 @@
             height: 3px;
             background-color: #95a6b2;
             margin: 6px 0;
-            transition: 0.4s;
         }
 
         /* Hero Content */
@@ -123,64 +122,44 @@
         .text-local { color: #95a6b2; }
         .text-global { color: #CAC16A; }
 
-        /* Updated Tagline Styling */
+        /* Tagline Styling - Lines extend beyond text */
         .hero-tagline {
-            border-top: 4px solid #CAC16A; /* Thicker lines */
+            border-top: 4px solid #CAC16A;
             border-bottom: 4px solid #CAC16A;
-            padding: 15px 0;
+            padding: 20px 60px; /* Horizontal padding makes lines extend */
             margin-top: 10px;
-            width: auto;
-            min-width: 400px;
+            display: inline-block;
         }
 
         .hero-tagline p {
-            color: #ffffff; /* White text for readability */
-            font-size: 1.15rem; /* Slightly smaller */
-            font-weight: 500;
+            color: #ffffff;
+            font-size: 1.1rem;
+            font-weight: 400;
             letter-spacing: 1px;
-            /* Not all caps */
         }
 
         /* Main Content */
         main { padding: 100px 0; }
 
-        .intro-title {
-            font-size: 2.2rem;
-            font-weight: 800;
-            margin-bottom: 30px;
-            color: #1b4332;
-        }
-
-        .intro-text {
-            font-size: 1.25rem;
-            margin-bottom: 60px;
-            max-width: 850px;
-        }
-
-        .questions-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            width: 100%;
-        }
-
-        .question-box h3 {
-            color: #1b4332;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            font-size: 1.2rem;
-        }
-
-        .question-box ul { list-style: none; }
-        .question-box li { margin-bottom: 12px; font-size: 1.1rem; }
-
-        /* Toggle States */
+        /* Dynamic States */
         .header-home { height: 800px; }
-        .header-internal { height: 250px; }
+        .header-internal { height: 300px; }
         .hidden { display: none; }
 
-        /* --- MOBILE & TABLET LAYOUT (Triggered at 1300px) --- */
-        @media (max-width: 1300px) {
+        /* --- STAGE 1: 1500px to 1101px (Logo top, Menu Centered Underneath) --- */
+        @media (max-width: 1500px) and (min-width: 1101px) {
+            nav {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+            .nav-links {
+                padding-bottom: 0;
+            }
+        }
+
+        /* --- STAGE 2: 1100px and Under (Mobile Hamburger) --- */
+        @media (max-width: 1100px) {
             .container { width: 90%; }
             
             nav {
@@ -193,24 +172,26 @@
             .nav-links {
                 position: fixed;
                 top: 0;
-                right: -100%; /* Hidden off-screen */
+                right: -100%;
                 height: 100vh;
-                width: 250px;
-                background-color: #1b4332;
+                width: 280px;
+                background-color: #CAC16A; /* Global Impact Gold Color */
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                transition: 0.5s;
-                box-shadow: -5px 0 15px rgba(0,0,0,0.3);
+                transition: 0.4s ease-in-out;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.2);
             }
 
             .nav-links.active { right: 0; }
 
+            .nav-links a {
+                color: #022F40; /* Dark Blue from initially requested tagline text */
+                font-size: 1.3rem;
+            }
+
             .logo-container img { width: 220px; }
-            
-            .questions-grid { grid-template-columns: 1fr; }
-            .hero-content h1 { line-height: 1.3; }
-            .hero-tagline { min-width: 90%; }
+            .hero-tagline { padding: 15px 20px; width: 90%; }
             header { background-attachment: scroll; }
         }
     </style>
@@ -253,8 +234,8 @@
 
     <main>
         <div class="container">
-            <h2 class="intro-title">DESIGN WITH PURPOSE</h2>
-            <p class="intro-text">
+            <h2 style="font-size: 2.2rem; font-weight: 800; margin-bottom: 30px; color: #1b4332;">DESIGN WITH PURPOSE</h2>
+            <p style="font-size: 1.25rem; margin-bottom: 60px; max-width: 850px;">
                 Great design is like crafting a fine wine. It takes the right ingredients, skilled hands, the proper tools, 
                 time for testing and refinement, and, most importantly, the public’s approval. I apply the same 
                 thoughtful approach to every project I take on.
@@ -262,10 +243,10 @@
 
             <p style="margin-bottom: 20px;"><strong>Before I begin designing, I ask key questions to ensure clarity and intent:</strong></p>
 
-            <div class="questions-grid">
-                <div class="question-box">
-                    <h3>Audience & Connection</h3>
-                    <ul>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 60px; width: 100%; text-align: center;">
+                <div>
+                    <h3 style="color: #1b4332; margin-bottom: 20px; text-transform: uppercase;">Audience & Connection</h3>
+                    <ul style="list-style: none;">
                         <li>Who is the audience?</li>
                         <li>How do they think?</li>
                         <li>What matters to them?</li>
@@ -273,9 +254,9 @@
                     </ul>
                 </div>
 
-                <div class="question-box">
-                    <h3>Purpose & Effectiveness</h3>
-                    <ul>
+                <div>
+                    <h3 style="color: #1b4332; margin-bottom: 20px; text-transform: uppercase;">Purpose & Effectiveness</h3>
+                    <ul style="list-style: none;">
                         <li>What is the goal of this design?</li>
                         <li>Does it support and enhance the message?</li>
                         <li>Is the message clear and compelling?</li>
@@ -294,8 +275,6 @@
         function updateHeader(isHome) {
             const header = document.getElementById('mainHeader');
             const hero = document.getElementById('heroText');
-            
-            // Close mobile menu if open
             document.getElementById('navLinks').classList.remove('active');
 
             if (isHome) {
