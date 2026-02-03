@@ -12,8 +12,8 @@
 
         /* Unified Container Logic */
         .container { 
-            width: 80%; /* Increased for better breathing room on smaller screens */
-            max-width: 1000px; /* Locked max-width for perfect centering of all sections */
+            width: 80%; 
+            max-width: 1000px; 
             margin: 0 auto; 
             display: flex; 
             flex-direction: column; 
@@ -53,7 +53,7 @@
         section { padding: 80px 0; width: 100%; }
 
         .image-row-gap { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 30px; margin: 40px 0; width: 100%; }
-        .image-row-gap img { width: 100%; height: 350px; object-fit: cover; border-radius: 4px; }
+        .image-row-gap img { width: 100%; aspect-ratio: 1160 / 772; object-fit: cover; border-radius: 4px; }
 
         .btn-connect {
             display: inline-block; background-color: #022F40; color: white;
@@ -74,7 +74,7 @@
         }
         .portfolio-item:hover .portfolio-overlay { opacity: 1; }
 
-        /* Services Grid (3 on top, 2 centered bottom) */
+        /* Services Icon Logic */
         .services-container {
             display: grid;
             grid-template-columns: repeat(6, 1fr);
@@ -82,16 +82,28 @@
             margin-top: 50px;
             width: 100%;
         }
-        .service-item { grid-column: span 2; display: flex; flex-direction: column; align-items: center; }
+        .service-item { grid-column: span 2; display: flex; flex-direction: column; align-items: center; cursor: pointer; }
         .service-item.center-bottom-1 { grid-column: 2 / span 2; }
         .service-item.center-bottom-2 { grid-column: 4 / span 2; }
         
-        /* Icon Styling */
-        .circle-icon { 
-            width: 100px; height: 100px; border: 2px solid #CAC16A; border-radius: 50%; 
-            margin-bottom: 20px; display: flex; align-items: center; justify-content: center;
-            background: #fdfdfd; font-size: 2rem; color: #1b4332;
+        .icon-box { 
+            position: relative;
+            width: 120px; 
+            height: 120px; 
+            margin-bottom: 20px;
         }
+        .icon-box img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transition: opacity 0.3s ease;
+        }
+        .icon-hover { opacity: 0; }
+        .service-item:hover .icon-standard { opacity: 0; }
+        .service-item:hover .icon-hover { opacity: 1; }
+
         .service-item p { font-weight: 700; color: #1b4332; font-size: 1rem; }
 
         /* Responsive */
@@ -107,6 +119,7 @@
             .image-row-gap, .portfolio-banner, .services-container { grid-template-columns: 1fr; display: flex; flex-direction: column; align-items: center; }
             .service-item, .service-item.center-bottom-1, .service-item.center-bottom-2 { grid-column: span 1; }
             .section-title { font-size: 1.8rem; }
+            .portfolio-item { height: 350px; }
         }
 
         .header-home { height: 800px; }
@@ -164,9 +177,9 @@
             </div>
 
             <div class="image-row-gap">
-                <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=800" alt="Process">
-                <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80&w=800" alt="Creative workstation">
-                <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&q=80&w=800" alt="Design planning">
+                <img src="ktv-sketch.png" alt="KTV Sketch">
+                <img src="leaf-graphic.png" alt="Leaf Graphic">
+                <img src="dr-logo-sketch.png" alt="DR Logo Sketch">
             </div>
         </section>
 
@@ -179,19 +192,62 @@
     </main>
 
     <div class="portfolio-banner">
-        <div class="portfolio-item"><img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=1000" alt="Work 1"><div class="portfolio-overlay"><h3>Brand Identity</h3></div></div>
-        <div class="portfolio-item"><img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&q=80&w=1000" alt="Work 2"><div class="portfolio-overlay"><h3>Web UX</h3></div></div>
-        <div class="portfolio-item"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1000" alt="Work 3"><div class="portfolio-overlay"><h3>Infographics</h3></div></div>
+        <div class="portfolio-item">
+            <img src="touzled-tressez.png" alt="Touzled Tressez">
+            <div class="portfolio-overlay"><h3>Touzled Tressez</h3></div>
+        </div>
+        <div class="portfolio-item">
+            <img src="bakerb-solutions.png" alt="BakerB Solutions">
+            <div class="portfolio-overlay"><h3>BakerB Solutions</h3></div>
+        </div>
+        <div class="portfolio-item">
+            <img src="ktv-properties.png" alt="KTV Properties">
+            <div class="portfolio-overlay"><h3>KTV Properties</h3></div>
+        </div>
     </div>
 
     <section class="container">
         <h2 class="section-title">SERVICES</h2>
         <div class="services-container">
-            <div class="service-item"><div class="circle-icon">🌐</div><p>Website Creation</p></div>
-            <div class="service-item"><div class="circle-icon">🖋️</div><p>Logos & Branding</p></div>
-            <div class="service-item"><div class="circle-icon">📊</div><p>Infographics</p></div>
-            <div class="service-item center-bottom-1"><div class="circle-icon">📄</div><p>Marketing Materials</p></div>
-            <div class="service-item center-bottom-2"><div class="circle-icon">📱</div><p>Social Media Content</p></div>
+            <div class="service-item">
+                <div class="icon-box">
+                    <img src="website-creation.png" class="icon-standard" alt="Website Creation">
+                    <img src="website-creation-hover.png" class="icon-hover" alt="Website Creation Hover">
+                </div>
+                <p>Website Creation</p>
+            </div>
+
+            <div class="service-item">
+                <div class="icon-box">
+                    <img src="logos-and-branding.png" class="icon-standard" alt="Logos & Branding">
+                    <img src="logos-and-branding-hover.png" class="icon-hover" alt="Logos & Branding Hover">
+                </div>
+                <p>Logos & Branding</p>
+            </div>
+
+            <div class="service-item">
+                <div class="icon-box">
+                    <img src="infographics.png" class="icon-standard" alt="Infographics">
+                    <img src="infographics-hover.png" class="icon-hover" alt="Infographics Hover">
+                </div>
+                <p>Infographics</p>
+            </div>
+
+            <div class="service-item center-bottom-1">
+                <div class="icon-box">
+                    <img src="marketing-materials.png" class="icon-standard" alt="Marketing Materials">
+                    <img src="marketing-materials-hover.png" class="icon-hover" alt="Marketing Materials Hover">
+                </div>
+                <p>Marketing Materials</p>
+            </div>
+
+            <div class="service-item center-bottom-2">
+                <div class="icon-box">
+                    <img src="social-media-content.png" class="icon-standard" alt="Social Media Content">
+                    <img src="social-media-content-hover.png" class="icon-hover" alt="Social Media Content Hover">
+                </div>
+                <p>Social Media Content</p>
+            </div>
         </div>
     </section>
 
