@@ -10,28 +10,35 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
         body { background-color: #ffffff; line-height: 1.8; color: #333; text-align: center; overflow-x: hidden; }
 
+        /* Unified Container Width */
+        .container { 
+            width: 60%; 
+            max-width: 1200px; /* Ensures it doesn't get too wide on massive monitors */
+            margin: 0 auto; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+        }
+
         /* Header & Hero */
         header {
             background: linear-gradient(rgba(27, 67, 50, 0.3), rgba(27, 67, 50, 0.4)), url('Green Background.png'); 
             background-size: cover; background-position: center; background-attachment: fixed;
             color: white; width: 100%; display: flex; flex-direction: column; align-items: center; position: relative;
         }
-        .container { width: 60%; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
 
-        /* Nav */
         nav { display: flex; justify-content: space-between; align-items: flex-end; padding: 40px 0; width: 100%; z-index: 100; }
         .logo-container img { width: 300px; height: auto; display: block; }
+        
         .nav-links { list-style: none; display: flex; gap: 40px; padding-bottom: 5px; }
         .nav-links a { color: #95a6b2; text-decoration: none; font-weight: 500; text-transform: uppercase; font-size: 1.1rem; letter-spacing: 1.5px; position: relative; }
         .nav-links a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: 0; left: 0; background-color: #CAC16A; transition: width 0.3s; }
         .nav-links a:hover::after { width: 100%; }
 
-        /* Hamburger */
         .hamburger { display: none; cursor: pointer; background: none; border: none; z-index: 200; }
         .hamburger span { display: block; width: 30px; height: 3px; background-color: #95a6b2; margin: 6px 0; }
         .nav-active .hamburger span { background-color: #022F40; }
 
-        /* Hero Text */
         .hero-content { padding: 100px 0 120px; }
         .hero-content h1 { font-size: clamp(3rem, 8vw, 5rem); font-weight: 900; line-height: 1.2; margin-bottom: 30px; letter-spacing: 1px; }
         .text-local { color: #95a6b2; }
@@ -39,24 +46,21 @@
         .hero-tagline { border-top: 4px solid #CAC16A; border-bottom: 4px solid #CAC16A; padding: 12px 15px; display: inline-block; }
         .hero-tagline p { color: #ffffff; font-size: 1.1rem; font-weight: 400; }
 
-        /* Section Spacing */
-        section { padding: 60px 0; width: 100%; }
+        /* Content Sections */
+        section { padding: 80px 0; width: 100%; text-align: center; }
 
-        /* 3-Image Row (with gap) */
         .image-row-gap { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 30px; margin: 40px 0; width: 100%; }
-        .image-row-gap img { width: 100%; height: 350px; object-fit: cover; border-radius: 4px; border: 1px solid #eee; }
+        .image-row-gap img { width: 100%; height: 350px; object-fit: cover; border-radius: 4px; }
 
-        /* Connect Button */
         .btn-connect {
             display: inline-block; background-color: #022F40; color: white;
             padding: 20px 45px; text-decoration: none; font-weight: 700;
-            border-radius: 4px; margin: 40px 0; transition: 0.3s;
-            font-size: 1.1rem;
+            border-radius: 4px; margin: 40px 0; transition: 0.3s; font-size: 1.1rem;
         }
         .btn-connect:hover { color: #CAC16A; background-color: #011d27; }
 
-        /* Full Width Portfolio Banner (No Gap) */
-        .portfolio-banner { display: grid; grid-template-columns: 1fr 1fr 1fr; width: 100%; margin: 60px 0 0; }
+        /* Full Width Portfolio Banner */
+        .portfolio-banner { display: grid; grid-template-columns: 1fr 1fr 1fr; width: 100vw; margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%); }
         .portfolio-item { position: relative; height: 450px; overflow: hidden; cursor: pointer; }
         .portfolio-item img { width: 100%; height: 100%; object-fit: cover; }
         .portfolio-overlay {
@@ -67,32 +71,44 @@
         }
         .portfolio-item:hover .portfolio-overlay { opacity: 1; }
 
-        /* Services Section */
-        .services-section { padding-bottom: 100px; background-color: #fcfcfc; }
-        .services-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 60px; margin-top: 50px; width: 100%; }
-        .service-item { display: flex; flex-direction: column; align-items: center; }
-        .circle-icon { width: 100px; height: 100px; border: 2px solid #CAC16A; border-radius: 50%; margin-bottom: 20px; background-color: white; }
-        .service-item p { font-weight: 700; color: #1b4332; font-size: 1rem; letter-spacing: 0.5px; }
+        /* Services - Consistent Spacing Grid */
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr); /* 6 columns to allow easy 3/2 split */
+            gap: 40px;
+            margin-top: 50px;
+            width: 100%;
+        }
+        .service-item { grid-column: span 2; display: flex; flex-direction: column; align-items: center; }
+        /* Bottom row positioning (centered in the 6-col grid) */
+        .service-item.bottom-row-1 { grid-column: 2 / span 2; }
+        .service-item.bottom-row-2 { grid-column: 4 / span 2; }
         
-        .services-bottom-row { display: flex; justify-content: center; gap: 60px; margin-top: 60px; width: 100%; }
+        .circle-icon { width: 100px; height: 100px; border: 2px solid #CAC16A; border-radius: 50%; margin-bottom: 20px; background-color: #f9f9f9; }
+        .service-item p { font-weight: 700; color: #1b4332; font-size: 1rem; }
 
-        /* Responsive */
+        /* Responsive Logic */
         @media (max-width: 1500px) and (min-width: 1101px) {
             nav { flex-direction: column; align-items: center; gap: 20px; }
         }
 
         @media (max-width: 1100px) {
-            .container { width: 90%; }
+            .container { width: 85%; }
             .hamburger { display: block; }
-            .nav-links { position: fixed; top: 0; right: -100%; height: 100vh; width: 280px; background: #CAC16A; flex-direction: column; justify-content: center; transition: 0.4s; }
+            .nav-links { position: fixed; top: 0; right: -100%; height: 100vh; width: 280px; background: #CAC16A; flex-direction: column; justify-content: center; transition: 0.4s; z-index: 200;}
             .nav-links.active { right: 0; }
             .nav-links a { color: #022F40; margin: 15px 0; }
-            
-            .image-row-gap, .portfolio-banner, .services-grid, .services-bottom-row { 
+            header { background-attachment: scroll; }
+        }
+
+        /* Mobile Only: Collapse Grids */
+        @media (max-width: 768px) {
+            .container { width: 92%; }
+            .image-row-gap, .portfolio-banner, .services-container { 
                 grid-template-columns: 1fr; display: flex; flex-direction: column; align-items: center; gap: 40px; 
             }
-            .hero-content h1 { letter-spacing: -2px; line-height: 1.1; } 
-            header { background-attachment: scroll; }
+            .service-item, .service-item.bottom-row-1, .service-item.bottom-row-2 { grid-column: span 1; }
+            .hero-content h1 { letter-spacing: -2px; }
         }
 
         /* Fixed States */
@@ -125,12 +141,12 @@
     <main class="container">
         <section>
             <h2 style="color:#1b4332; font-size: 2.2rem; margin-bottom: 20px; font-weight: 900;">DESIGN WITH PURPOSE</h2>
-            <p style="margin-bottom: 40px; font-size: 1.2rem; max-width: 800px; margin-left: auto; margin-right: auto;">Great design is like crafting a fine wine. It takes the right ingredients, skilled hands, the proper tools, time for testing and refinement, and, most importantly, the public’s approval.</p>
+            <p style="margin-bottom: 40px; font-size: 1.2rem; max-width: 850px;">Great design is like crafting a fine wine. It takes the right ingredients, skilled hands, the proper tools, time for testing and refinement, and, most importantly, the public’s approval.</p>
             
             <p style="font-weight: bold; color: #1b4332; text-transform: uppercase; letter-spacing: 1px;">Before I begin designing, I ask key questions to ensure clarity and intent:</p>
             
-            <div style="display: flex; justify-content: center; gap: 80px; flex-wrap: wrap; margin-top: 40px; text-align: left;">
-                <div style="max-width: 350px;">
+            <div style="display: flex; justify-content: center; gap: 60px; flex-wrap: wrap; margin-top: 40px; text-align: left; width: 100%;">
+                <div style="flex: 1; min-width: 280px; max-width: 400px;">
                     <h3 style="color:#1b4332; margin-bottom: 15px; border-bottom: 2px solid #CAC16A; padding-bottom: 5px;">Audience & Connection:</h3>
                     <ul style="list-style: square; padding-left: 20px;">
                         <li>Who is the audience?</li>
@@ -139,7 +155,7 @@
                         <li>How can the design create a real connection?</li>
                     </ul>
                 </div>
-                <div style="max-width: 350px;">
+                <div style="flex: 1; min-width: 280px; max-width: 400px;">
                     <h3 style="color:#1b4332; margin-bottom: 15px; border-bottom: 2px solid #CAC16A; padding-bottom: 5px;">Purpose & Effectiveness:</h3>
                     <ul style="list-style: square; padding-left: 20px;">
                         <li>What is the goal of this design?</li>
@@ -151,13 +167,13 @@
             </div>
 
             <div class="image-row-gap">
-                <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&q=80&w=800" alt="Design Setup">
-                <img src="https://images.unsplash.com/photo-1586717791821-3f44a563eb4c?auto=format&fit=crop&q=80&w=800" alt="Process">
-                <img src="https://images.unsplash.com/photo-1542744094-24638eff58bb?auto=format&fit=crop&q=80&w=800" alt="Analytics">
+                <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=800" alt="Process">
+                <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&q=80&w=800" alt="Workstation">
+                <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&q=80&w=800" alt="Design Plan">
             </div>
         </section>
 
-        <section style="text-align: left; max-width: 850px; margin: 0 auto; border-top: 1px solid #eee; padding-top: 80px;">
+        <section style="text-align: left; width: 100%; border-top: 1px solid #eee; padding-top: 80px;">
             <p style="margin-bottom: 25px; font-size: 1.15rem;">Hi, I'm Derek Rebuck, a visual designer in the DMV, with over a decade of experience in graphic and web design. Since 2012, I've helped businesses of all sizes improve their branding, connect with audiences, and grow through strategic design. I've worked with a wide range of clients including federal agencies and contracts, colleges and universities, nonprofits and political campaigns, real estate firms, restaurants, schools, churches, retail businesses, startups, small business and more.</p>
             <p style="margin-bottom: 25px; font-size: 1.15rem;">Clients come to me for a range of creative solutions, including, logos & brand identity, style guides, websites, social media graphics, marketing materials, product design templates, digital photography, infographics, content writing and more. My design style leans toward minimalism with bold, colorful touches, but I can adapt to any aesthetic based on your brand and audience. Flexibility and clarity are always key.</p>
             <p style="font-size: 1.15rem; font-weight: 500;">If you're looking for a designer who brings strategy, creativity, and professionalism to every product, while working closely with you every step of the way, you're in the right place.</p>
@@ -170,31 +186,28 @@
 
     <div class="portfolio-banner">
         <div class="portfolio-item">
-            <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&q=80&w=1000" alt="Project 1">
-            <div class="portfolio-overlay"><h3>Brand Identity</h3><p>Comprehensive logo and style guide development.</p></div>
+            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=1000" alt="Project 1">
+            <div class="portfolio-overlay"><h3>Brand Identity</h3><p>Minimalist and bold branding.</p></div>
         </div>
         <div class="portfolio-item">
-            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1000" alt="Project 2">
-            <div class="portfolio-overlay"><h3>Web Development</h3><p>Custom UI/UX and website architecture.</p></div>
+            <img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&q=80&w=1000" alt="Project 2">
+            <div class="portfolio-overlay"><h3>Web UX</h3><p>Clean and intuitive digital interfaces.</p></div>
         </div>
         <div class="portfolio-item">
-            <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80&w=1000" alt="Project 3">
-            <div class="portfolio-overlay"><h3>Marketing Strategy</h3><p>Engaging social content and marketing collateral.</p></div>
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1000" alt="Project 3">
+            <div class="portfolio-overlay"><h3>Infographics</h3><p>Complex data made simple.</p></div>
         </div>
     </div>
 
-    <section class="services-section">
-        <div class="container">
-            <h2 style="color:#1b4332; letter-spacing: 5px; font-weight: 900; margin-bottom: 20px;">SERVICES</h2>
-            <div class="services-grid">
-                <div class="service-item"><div class="circle-icon"></div><p>Website Creation</p></div>
-                <div class="service-item"><div class="circle-icon"></div><p>Logos & Branding</p></div>
-                <div class="service-item"><div class="circle-icon"></div><p>Infographics</p></div>
-            </div>
-            <div class="services-bottom-row">
-                <div class="service-item"><div class="circle-icon"></div><p>Marketing Materials</p></div>
-                <div class="service-item"><div class="circle-icon"></div><p>Social Media Content</p></div>
-            </div>
+    <section class="container" style="padding: 100px 0;">
+        <h2 style="color:#1b4332; letter-spacing: 5px; font-weight: 900; margin-bottom: 20px;">SERVICES</h2>
+        <div class="services-container">
+            <div class="service-item"><div class="circle-icon"></div><p>Website Creation</p></div>
+            <div class="service-item"><div class="circle-icon"></div><p>Logos & Branding</p></div>
+            <div class="service-item"><div class="circle-icon"></div><p>Infographics</p></div>
+            
+            <div class="service-item bottom-row-1"><div class="circle-icon"></div><p>Marketing Materials</p></div>
+            <div class="service-item bottom-row-2"><div class="circle-icon"></div><p>Social Media Content</p></div>
         </div>
     </section>
 
