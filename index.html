@@ -47,15 +47,15 @@
             align-items: center;
         }
 
-        /* Navigation Base */
+        /* Navigation */
         nav {
             display: flex;
             justify-content: space-between;
-            align-items: flex-end; /* Baseline alignment */
+            align-items: flex-end; 
             padding: 40px 0;
             width: 100%;
             position: relative;
-            z-index: 10;
+            z-index: 100;
         }
 
         .logo-container img {
@@ -69,20 +69,35 @@
             list-style: none;
             display: flex;
             gap: 40px;
-            padding-bottom: 5px; /* Aligns text visually with logo baseline */
+            padding-bottom: 5px;
         }
 
         .nav-links a {
             color: #95a6b2;
             text-decoration: none;
-            font-weight: 500; /* Thinned out the text */
+            font-weight: 500;
             text-transform: uppercase;
             font-size: 1.1rem;
             letter-spacing: 1.5px;
-            transition: color 0.3s;
+            position: relative;
+            padding-bottom: 2px;
         }
 
-        .nav-links a:hover { color: #CAC16A; }
+        /* Underline Hover Effect */
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #CAC16A;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
 
         /* Hamburger Icon */
         .hamburger {
@@ -91,7 +106,7 @@
             background: none;
             border: none;
             padding: 10px;
-            z-index: 20;
+            z-index: 200;
         }
 
         .hamburger span {
@@ -100,6 +115,12 @@
             height: 3px;
             background-color: #95a6b2;
             margin: 6px 0;
+            transition: 0.3s;
+        }
+
+        /* Mobile Menu Active State for Hamburger */
+        .nav-active .hamburger span {
+            background-color: #022F40; /* Blue color when menu is open */
         }
 
         /* Hero Content */
@@ -112,8 +133,9 @@
             padding-bottom: 120px;
         }
 
+        /* Fixed shrinking text for screens under 1000px */
         .hero-content h1 {
-            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-size: clamp(3.2rem, 8vw, 5rem); /* Increased minimum size */
             font-weight: 900;
             line-height: 1.5; 
             margin-bottom: 30px;
@@ -122,13 +144,14 @@
         .text-local { color: #95a6b2; }
         .text-global { color: #CAC16A; }
 
-        /* Tagline Styling - Lines extend beyond text */
+        /* Tagline Styling - Optimized Line Width */
         .hero-tagline {
             border-top: 4px solid #CAC16A;
             border-bottom: 4px solid #CAC16A;
-            padding: 20px 60px; /* Horizontal padding makes lines extend */
+            padding: 12px 15px; /* Tighter padding for shorter lines */
             margin-top: 10px;
             display: inline-block;
+            max-width: fit-content;
         }
 
         .hero-tagline p {
@@ -138,35 +161,25 @@
             letter-spacing: 1px;
         }
 
-        /* Main Content */
-        main { padding: 100px 0; }
-
         /* Dynamic States */
         .header-home { height: 800px; }
         .header-internal { height: 300px; }
         .hidden { display: none; }
 
-        /* --- STAGE 1: 1500px to 1101px (Logo top, Menu Centered Underneath) --- */
+        /* --- STAGE 1: 1500px to 1101px (Logo top, Menu Centered) --- */
         @media (max-width: 1500px) and (min-width: 1101px) {
             nav {
                 flex-direction: column;
                 align-items: center;
                 gap: 20px;
             }
-            .nav-links {
-                padding-bottom: 0;
-            }
+            .nav-links { padding-bottom: 0; }
         }
 
-        /* --- STAGE 2: 1100px and Under (Mobile Hamburger) --- */
+        /* --- STAGE 2: 1100px and Under (Mobile) --- */
         @media (max-width: 1100px) {
             .container { width: 90%; }
-            
-            nav {
-                align-items: center;
-                padding: 25px 0;
-            }
-
+            nav { align-items: center; padding: 25px 0; }
             .hamburger { display: block; }
 
             .nav-links {
@@ -175,32 +188,34 @@
                 right: -100%;
                 height: 100vh;
                 width: 280px;
-                background-color: #CAC16A; /* Global Impact Gold Color */
+                background-color: #CAC16A; /* Gold Background */
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                transition: 0.4s ease-in-out;
+                transition: 0.4s cubic-bezier(0.77,0,0.175,1);
                 box-shadow: -5px 0 15px rgba(0,0,0,0.2);
             }
 
             .nav-links.active { right: 0; }
 
             .nav-links a {
-                color: #022F40; /* Dark Blue from initially requested tagline text */
+                color: #022F40; /* Blue Text */
                 font-size: 1.3rem;
+                margin: 15px 0;
             }
+            
+            .nav-links a::after { background-color: #022F40; } /* Underline color on mobile */
 
             .logo-container img { width: 220px; }
-            .hero-tagline { padding: 15px 20px; width: 90%; }
             header { background-attachment: scroll; }
         }
     </style>
 </head>
-<body>
+<body id="body">
 
     <header id="mainHeader" class="header-home">
         <div class="container" style="height: 100%;">
-            <nav>
+            <nav id="navbar">
                 <a href="#" class="logo-container" onclick="updateHeader(true)">
                     <img src="dr-logo.png" alt="DR Logo">
                 </a>
@@ -240,42 +255,22 @@
                 time for testing and refinement, and, most importantly, the public’s approval. I apply the same 
                 thoughtful approach to every project I take on.
             </p>
-
-            <p style="margin-bottom: 20px;"><strong>Before I begin designing, I ask key questions to ensure clarity and intent:</strong></p>
-
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 60px; width: 100%; text-align: center;">
-                <div>
-                    <h3 style="color: #1b4332; margin-bottom: 20px; text-transform: uppercase;">Audience & Connection</h3>
-                    <ul style="list-style: none;">
-                        <li>Who is the audience?</li>
-                        <li>How do they think?</li>
-                        <li>What matters to them?</li>
-                        <li>How can the design create a real connection?</li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h3 style="color: #1b4332; margin-bottom: 20px; text-transform: uppercase;">Purpose & Effectiveness</h3>
-                    <ul style="list-style: none;">
-                        <li>What is the goal of this design?</li>
-                        <li>Does it support and enhance the message?</li>
-                        <li>Is the message clear and compelling?</li>
-                        <li>How do people respond to it?</li>
-                    </ul>
-                </div>
-            </div>
         </div>
     </main>
 
     <script>
         function toggleMenu() {
-            document.getElementById('navLinks').classList.toggle('active');
+            const navLinks = document.getElementById('navLinks');
+            const navbar = document.getElementById('navbar');
+            navLinks.classList.toggle('active');
+            navbar.classList.toggle('nav-active');
         }
 
         function updateHeader(isHome) {
             const header = document.getElementById('mainHeader');
             const hero = document.getElementById('heroText');
             document.getElementById('navLinks').classList.remove('active');
+            document.getElementById('navbar').classList.remove('nav-active');
 
             if (isHome) {
                 header.classList.remove('header-internal');
