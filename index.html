@@ -11,25 +11,32 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
         }
 
         body {
             background-color: #ffffff;
-            line-height: 1.6;
+            line-height: 1.8;
             color: #333;
-            text-align: center; /* Centers all text globally */
+            text-align: center;
         }
 
-        /* Header Styling */
+        /* Header Styling with Background Image Support */
         header {
-            background-color: #1b4332; /* Professional Forest Green */
+            /* Using a high-quality texture/architecture image as a placeholder */
+            background: 
+                linear-gradient(rgba(27, 67, 50, 0.85), rgba(27, 67, 50, 0.9)), 
+                url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2000');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Parallax effect */
             color: white;
             width: 100%;
-            transition: height 0.5s ease;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             flex-direction: column;
             align-items: center;
+            overflow: hidden;
         }
 
         /* 60% Width Centered Container */
@@ -38,41 +45,49 @@
             margin: 0 auto;
             display: flex;
             flex-direction: column;
-            align-items: center; /* Centers items in the flex container */
+            align-items: center;
         }
 
         /* Navigation Bar */
         nav {
             display: flex;
-            flex-direction: column; /* Stack logo and nav vertically */
+            flex-direction: column; 
             align-items: center;
-            padding: 30px 0;
+            padding: 40px 0;
             width: 100%;
-            gap: 20px;
+            gap: 25px;
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            letter-spacing: 2px;
+            font-size: 1.2rem;
+            font-weight: 800;
+            letter-spacing: 4px;
             border: 2px solid white;
-            padding: 5px 15px;
+            padding: 8px 20px;
             display: inline-block;
+            transition: all 0.3s ease;
         }
 
         .nav-links {
             list-style: none;
             display: flex;
             justify-content: center;
-            gap: 30px;
+            gap: 40px;
         }
 
         .nav-links a {
             color: white;
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 600;
             text-transform: uppercase;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
+            letter-spacing: 1.5px;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 1;
         }
 
         /* Hero Content */
@@ -82,57 +97,63 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding-bottom: 80px;
+            padding-bottom: 100px;
+            transition: opacity 0.4s ease;
         }
 
         .hero-content h1 {
-            font-size: 4rem;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            text-align: center;
+            font-size: clamp(2.5rem, 5vw, 4.5rem); /* Responsive font sizing */
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 25px;
+            letter-spacing: -1px;
         }
 
         .hero-content p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            opacity: 0.9;
-            text-align: center;
+            font-size: 1.25rem;
+            max-width: 550px;
+            font-weight: 300;
+            letter-spacing: 0.5px;
         }
 
         /* Main Content Section */
         main {
-            padding: 80px 0;
+            padding: 100px 0;
         }
 
         .intro-title {
-            font-size: 2rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-            text-transform: uppercase;
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+            color: #1b4332;
         }
 
         .intro-text {
-            font-size: 1.1rem;
-            margin-bottom: 40px;
-            max-width: 800px;
+            font-size: 1.2rem;
+            margin-bottom: 60px;
+            max-width: 850px;
+            color: #555;
         }
 
         /* Questions Section */
         .questions-wrapper {
-            margin-top: 50px;
             width: 100%;
-            max-width: 700px;
+            max-width: 600px;
+            border-top: 1px solid #eee;
+            padding-top: 50px;
         }
 
         .question-box {
-            margin-bottom: 40px;
+            margin-bottom: 50px;
         }
 
         .question-box h3 {
             color: #1b4332;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             text-transform: uppercase;
-            font-size: 1.4rem;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
         }
 
         .question-box ul {
@@ -141,14 +162,20 @@
         }
 
         .question-box li {
-            margin-bottom: 8px;
+            margin-bottom: 12px;
             font-size: 1.1rem;
+            color: #444;
         }
 
-        /* Classes for Header Heights */
+        /* Dynamic Classes */
         .header-home { height: 800px; }
         .header-internal { height: 200px; }
-        .hidden { display: none; }
+        .hidden { 
+            opacity: 0;
+            pointer-events: none;
+            height: 0;
+            padding: 0;
+        }
 
     </style>
 </head>
@@ -183,7 +210,9 @@
                 thoughtful approach to every project I take on.
             </p>
 
-            <p style="margin-bottom: 30px;"><strong>Before I begin designing, I ask key questions to ensure clarity and intent:</strong></p>
+            <p style="margin-bottom: 40px; color: #1b4332; letter-spacing: 1px;">
+                <strong>BEFORE I BEGIN DESIGNING, I ASK KEY QUESTIONS:</strong>
+            </p>
 
             <div class="questions-wrapper">
                 <div class="question-box">
