@@ -3,200 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <title>Local Designs | Global Impact</title>
     <style>
         /* Base Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+        body { background-color: #ffffff; line-height: 1.8; color: #333; text-align: center; overflow-x: hidden; }
 
-        body {
-            background-color: #ffffff;
-            line-height: 1.6;
-            color: #333;
-        }
-
-        /* Header Styling */
+        /* Header & Hero */
         header {
-            background-color: #1b4332; /* Professional Green */
-            color: white;
-            width: 100%;
-            transition: height 0.5s ease;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            background: linear-gradient(rgba(27, 67, 50, 0.3), rgba(27, 67, 50, 0.4)), url('Green Background.png'); 
+            background-size: cover; background-position: center; background-attachment: fixed;
+            color: white; width: 100%; display: flex; flex-direction: column; align-items: center; position: relative;
+        }
+        .container { width: 60%; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
+
+        /* Nav */
+        nav { display: flex; justify-content: space-between; align-items: flex-end; padding: 40px 0; width: 100%; z-index: 100; }
+        .logo-container img { width: 300px; height: auto; display: block; }
+        .nav-links { list-style: none; display: flex; gap: 40px; padding-bottom: 5px; }
+        .nav-links a { color: #95a6b2; text-decoration: none; font-weight: 500; text-transform: uppercase; font-size: 1.1rem; letter-spacing: 1.5px; position: relative; }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-links a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: 0; left: 0; background-color: #CAC16A; transition: width 0.3s; }
+
+        /* Hamburger */
+        .hamburger { display: none; cursor: pointer; background: none; border: none; z-index: 200; }
+        .hamburger span { display: block; width: 30px; height: 3px; background-color: #95a6b2; margin: 6px 0; }
+        .nav-active .hamburger span { background-color: #022F40; }
+
+        /* Hero Text */
+        .hero-content { padding: 100px 0 120px; }
+        .hero-content h1 { font-size: clamp(3rem, 8vw, 5rem); font-weight: 900; line-height: 1.2; margin-bottom: 30px; letter-spacing: 1px; }
+        .text-local { color: #95a6b2; }
+        .text-global { color: #CAC16A; }
+        .hero-tagline { border-top: 4px solid #CAC16A; border-bottom: 4px solid #CAC16A; padding: 12px 15px; display: inline-block; }
+        .hero-tagline p { color: #ffffff; font-size: 1.1rem; font-weight: 400; }
+
+        /* Section Spacing */
+        section { padding: 80px 0; width: 100%; }
+
+        /* 3-Image Row (with gap) */
+        .image-row-gap { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 30px; margin: 40px 0; width: 100%; }
+        .image-row-gap img { width: 100%; height: 300px; object-fit: cover; border-radius: 4px; }
+
+        /* Connect Button */
+        .btn-connect {
+            display: inline-block; background-color: #022F40; color: white;
+            padding: 20px 40px; text-decoration: none; font-weight: bold;
+            border-radius: 5px; margin: 40px 0; transition: 0.3s;
+        }
+        .btn-connect:hover { color: #CAC16A; }
+
+        /* Full Width Portfolio Banner */
+        .portfolio-banner { display: grid; grid-template-columns: 1fr 1fr 1fr; width: 100%; margin: 60px 0; }
+        .portfolio-item { position: relative; height: 400px; overflow: hidden; cursor: pointer; }
+        .portfolio-item img { width: 100%; height: 100%; object-fit: cover; }
+        .portfolio-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(27, 67, 50, 0.8); color: white;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            opacity: 0; transition: 0.5s; padding: 20px;
+        }
+        .portfolio-item:hover .portfolio-overlay { opacity: 1; }
+
+        /* Services Section */
+        .services-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px; margin-top: 50px; }
+        .service-item { display: flex; flex-direction: column; align-items: center; }
+        .circle-icon { width: 80px; height: 800px; max-height: 80px; border: 2px solid #CAC16A; border-radius: 50%; margin-bottom: 15px; }
+        .services-bottom-row { grid-column: span 3; display: flex; justify-content: center; gap: 100px; margin-top: 20px; }
+
+        /* Responsive */
+        @media (max-width: 1500px) and (min-width: 1101px) {
+            nav { flex-direction: column; align-items: center; gap: 20px; }
         }
 
-        /* 60% Width Centered Container */
-        .container {
-            width: 60%;
-            margin: 0 auto;
+        @media (max-width: 1100px) {
+            .container { width: 90%; }
+            .hamburger { display: block; }
+            .nav-links { position: fixed; top: 0; right: -100%; height: 100vh; width: 280px; background: #CAC16A; flex-direction: column; justify-content: center; transition: 0.4s; }
+            .nav-links.active { right: 0; }
+            .nav-links a { color: #022F40; margin: 15px 0; }
+            .image-row-gap, .portfolio-banner, .services-grid, .services-bottom-row { grid-template-columns: 1fr; display: flex; flex-direction: column; align-items: center; gap: 30px; }
+            .hero-content h1 { letter-spacing: -2px; } /* Tightens the text when it truncates */
+            header { background-attachment: scroll; }
         }
 
-        /* Navigation Bar */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-            width: 100%;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            letter-spacing: 2px;
-            border: 2px solid white;
-            padding: 5px 15px;
-        }
-
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 30px;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-        }
-
-        .nav-links a:hover {
-            opacity: 0.7;
-        }
-
-        /* Hero Content */
-        .hero-content {
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding-bottom: 100px;
-        }
-
-        .hero-content h1 {
-            font-size: 4rem;
-            line-height: 1.1;
-            margin-bottom: 20px;
-        }
-
-        .hero-content p {
-            font-size: 1.2rem;
-            max-width: 500px;
-            opacity: 0.9;
-        }
-
-        /* Main Content Section */
-        main {
-            padding: 80px 0;
-        }
-
-        .intro-title {
-            font-size: 2rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
-
-        .intro-text {
-            font-size: 1.1rem;
-            margin-bottom: 40px;
-            max-width: 800px;
-        }
-
-        /* Questions Grid */
-        .questions-section {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin-top: 50px;
-        }
-
-        .question-box h3 {
-            color: #1b4332;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #e0e0e0;
-            padding-bottom: 10px;
-        }
-
-        .question-box ul {
-            list-style: none;
-        }
-
-        .question-box li {
-            margin-bottom: 10px;
-            position: relative;
-            padding-left: 20px;
-        }
-
-        .question-box li::before {
-            content: "•";
-            color: #1b4332;
-            position: absolute;
-            left: 0;
-            font-weight: bold;
-        }
-
-        /* Dynamic Classes for JS height toggle */
+        /* Fixed States */
         .header-home { height: 800px; }
-        .header-internal { height: 200px; }
+        .header-internal { height: 300px; }
         .hidden { display: none; }
-
     </style>
 </head>
 <body>
 
     <header id="mainHeader" class="header-home">
-        <div class="container" style="height: 100%; display: flex; flex-direction: column;">
-            <nav>
-                <div class="logo">LOGO</div>
-                <ul class="nav-links">
-                    <li><a href="#" onclick="setHeaderHeight(true)">Home</a></li>
-                    <li><a href="#" onclick="setHeaderHeight(false)">About</a></li>
-                    <li><a href="#" onclick="setHeaderHeight(false)">Services</a></li>
-                    <li><a href="#" onclick="setHeaderHeight(false)">Projects</a></li>
-                    <li><a href="#" onclick="setHeaderHeight(false)">Contact</a></li>
+        <div class="container" style="height: 100%;">
+            <nav id="navbar">
+                <a href="#" class="logo-container" onclick="updateHeader(true)"><img src="dr-logo.png" alt="DR Logo"></a>
+                <button class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#" onclick="updateHeader(true)">About</a></li>
+                    <li><a href="#" onclick="updateHeader(false)">Services</a></li>
+                    <li><a href="#" onclick="updateHeader(false)">Projects</a></li>
+                    <li><a href="#" onclick="updateHeader(false)">Contact</a></li>
                 </ul>
             </nav>
-
             <div id="heroText" class="hero-content">
-                <h1>LOCAL DESIGNS<br>GLOBAL IMPACT</h1>
-                <p>Creative, engaging content that elevates brands and drives results</p>
+                <h1><span class="text-local">LOCAL DESIGNS</span><br><span class="text-global">GLOBAL IMPACT</span></h1>
+                <div class="hero-tagline"><p>Creative, engaging content that elevates brands and drives results</p></div>
             </div>
         </div>
     </header>
 
-    <main>
-        <div class="container">
-            <h2 class="intro-title">DESIGN WITH PURPOSE</h2>
-            <p class="intro-text">
-                Great design is like crafting a fine wine. It takes the right ingredients, skilled hands, the proper tools, 
-                time for testing and refinement, and, most importantly, the public’s approval. I apply the same 
-                thoughtful approach to every project I take on.
-            </p>
-
-            <p><strong>Before I begin designing, I ask key questions to ensure clarity and intent:</strong></p>
-
-            <div class="questions-section">
-                <div class="question-box">
-                    <h3>Audience & Connection</h3>
-                    <ul>
+    <main class="container">
+        <section>
+            <h2 style="color:#1b4332; font-size: 2.2rem; margin-bottom: 20px;">DESIGN WITH PURPOSE</h2>
+            <p style="margin-bottom: 40px; font-size: 1.1rem;">Great design is like crafting a fine wine. It takes the right ingredients, skilled hands, the proper tools, time for testing and refinement, and, most importantly, the public’s approval.</p>
+            
+            <p style="font-weight: bold; color: #1b4332;">Before I begin designing, I ask key questions to ensure clarity and intent:</p>
+            
+            <div style="display: flex; justify-content: space-around; flex-wrap: wrap; margin-top: 30px; text-align: left;">
+                <div style="margin: 20px;">
+                    <h3 style="color:#1b4332;">Audience & Connection:</h3>
+                    <ul style="list-style: none;">
                         <li>Who is the audience?</li>
                         <li>How do they think?</li>
                         <li>What matters to them?</li>
                         <li>How can the design create a real connection?</li>
                     </ul>
                 </div>
-
-                <div class="question-box">
-                    <h3>Purpose & Effectiveness</h3>
-                    <ul>
+                <div style="margin: 20px;">
+                    <h3 style="color:#1b4332;">Purpose & Effectiveness:</h3>
+                    <ul style="list-style: none;">
                         <li>What is the goal of this design?</li>
                         <li>Does it support and enhance the message?</li>
                         <li>Is the message clear and compelling?</li>
@@ -204,23 +142,66 @@
                     </ul>
                 </div>
             </div>
-        </div>
+
+            <div class="image-row-gap">
+                <img src="image1.jpg" alt="Work 1">
+                <img src="image2.jpg" alt="Work 2">
+                <img src="image3.jpg" alt="Work 3">
+            </div>
+        </section>
+
+        <section style="text-align: left; max-width: 900px; margin: 0 auto;">
+            <p style="margin-bottom: 20px;">Hi, I'm Derek Rebuck, a visual designer in the DMV, with over a decade of experience in graphic and web design. Since 2012, I've helped businesses of all sizes improve their branding, connect with audiences, and grow through strategic design. I've worked with a wide range of clients including federal agencies and contracts, colleges and universities, nonprofits and political campaigns, real estate firms, restaurants, schools, churches, retail businesses, startups, small business and more.</p>
+            <p style="margin-bottom: 20px;">Clients come to me for a range of creative solutions, including, logos & brand identity, style guides, websites, social media graphics, marketing materials, product design templates, digital photography, infographics, content writing and more. My design style leans toward minimalism with bold, colorful touches, but I can adapt to any aesthetic based on your brand and audience. Flexibility and clarity are always key.</p>
+            <p>If you're looking for a designer who brings strategy, creativity, and professionalism to every product, while working closely with you every step of the way, you're in the right place.</p>
+            
+            <div style="text-align: center;">
+                <a href="contact.html" class="btn-connect">Let’s connect and bring your ideas to life</a>
+            </div>
+        </section>
     </main>
 
+    <div class="portfolio-banner">
+        <div class="portfolio-item">
+            <img src="port1.jpg" alt="Project">
+            <div class="portfolio-overlay"><h3>Project Title</h3><p>Brief description of the work performed.</p></div>
+        </div>
+        <div class="portfolio-item">
+            <img src="port2.jpg" alt="Project">
+            <div class="portfolio-overlay"><h3>Project Title</h3><p>Brief description of the work performed.</p></div>
+        </div>
+        <div class="portfolio-item">
+            <img src="port3.jpg" alt="Project">
+            <div class="portfolio-overlay"><h3>Project Title</h3><p>Brief description of the work performed.</p></div>
+        </div>
+    </div>
+
+    <section class="container">
+        <h2 style="color:#1b4332; letter-spacing: 3px;">SERVICES</h2>
+        <div class="services-grid">
+            <div class="service-item"><div class="circle-icon"></div><p>WEBSITE CREATION</p></div>
+            <div class="service-item"><div class="circle-icon"></div><p>LOGOS & BRANDING</p></div>
+            <div class="service-item"><div class="circle-icon"></div><p>INFOGRAPHICS</p></div>
+        </div>
+        <div class="services-bottom-row">
+            <div class="service-item"><div class="circle-icon"></div><p>MARKETING MATERIALS</p></div>
+            <div class="service-item"><div class="circle-icon"></div><p>SOCIAL CONTENT</p></div>
+        </div>
+    </section>
+
     <script>
-        function setHeaderHeight(isHome) {
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+            document.getElementById('navbar').classList.toggle('nav-active');
+        }
+        function updateHeader(isHome) {
             const header = document.getElementById('mainHeader');
             const hero = document.getElementById('heroText');
-            
-            if (isHome) {
-                header.classList.remove('header-internal');
-                header.classList.add('header-home');
-                hero.classList.remove('hidden');
-            } else {
-                header.classList.remove('header-home');
-                header.classList.add('header-internal');
-                hero.classList.add('hidden');
-            }
+            document.getElementById('navLinks').classList.remove('active');
+            document.getElementById('navbar').classList.remove('nav-active');
+            if (isHome) { header.classList.add('header-home'); header.classList.remove('header-internal'); hero.classList.remove('hidden'); }
+            else { header.classList.add('header-internal'); header.classList.remove('header-home'); hero.classList.add('hidden'); }
+            window.scrollTo({top: 0, behavior: 'smooth'});
         }
     </script>
 </body>
