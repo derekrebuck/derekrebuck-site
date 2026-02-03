@@ -24,7 +24,7 @@
         /* Header Styling */
         header {
             background: 
-                linear-gradient(rgba(27, 67, 50, 0.2), rgba(27, 67, 50, 0.3)), 
+                linear-gradient(rgba(27, 67, 50, 0.3), rgba(27, 67, 50, 0.4)), 
                 url('Green Background.png'); 
             background-size: cover;
             background-position: center;
@@ -36,6 +36,7 @@
             flex-direction: column;
             align-items: center;
             overflow: hidden;
+            position: relative;
         }
 
         .container {
@@ -46,26 +47,29 @@
             align-items: center;
         }
 
-        /* Navigation - Bottom Aligned */
+        /* Navigation */
         nav {
             display: flex;
             justify-content: space-between;
-            align-items: flex-end; /* Aligns logo and menu to the bottom baseline */
+            align-items: flex-end;
             padding: 40px 0;
             width: 100%;
+            position: relative;
+            z-index: 10;
         }
 
         .logo-container img {
-            width: 280px; /* Increased size for your 1816px wide logo */
+            width: 300px; /* Slightly larger logo */
             height: auto;
             display: block;
         }
 
+        /* Desktop Menu Styles */
         .nav-links {
             list-style: none;
             display: flex;
             gap: 40px;
-            padding-bottom: 5px; /* Fine-tuning the baseline alignment */
+            padding-bottom: 8px;
         }
 
         .nav-links a {
@@ -73,12 +77,31 @@
             text-decoration: none;
             font-weight: 700;
             text-transform: uppercase;
-            font-size: 0.95rem;
+            font-size: 1.1rem; /* Increased size per your request */
             letter-spacing: 1.5px;
             transition: color 0.3s;
         }
 
         .nav-links a:hover { color: #CAC16A; }
+
+        /* Hamburger Icon (Hidden on Desktop) */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 10px;
+            z-index: 20;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 30px;
+            height: 3px;
+            background-color: #95a6b2;
+            margin: 6px 0;
+            transition: 0.4s;
+        }
 
         /* Hero Content */
         .hero-content {
@@ -93,31 +116,29 @@
         .hero-content h1 {
             font-size: clamp(2.5rem, 6vw, 5rem);
             font-weight: 900;
-            line-height: 1.4; /* Increased vertical space between lines */
-            margin-bottom: 40px;
-            text-shadow: none; /* Shadow removed */
+            line-height: 1.5; 
+            margin-bottom: 30px;
         }
 
         .text-local { color: #95a6b2; }
         .text-global { color: #CAC16A; }
 
-        /* Redesigned Sub-text Styling */
+        /* Updated Tagline Styling */
         .hero-tagline {
-            border-top: 2px solid #CAC16A;
-            border-bottom: 2px solid #CAC16A;
-            padding: 20px 0;
-            margin-top: 20px;
-            width: 100%;
-            max-width: 700px;
-            background: rgba(202, 193, 106, 0.1); /* Subtle hint of the gold */
+            border-top: 4px solid #CAC16A; /* Thicker lines */
+            border-bottom: 4px solid #CAC16A;
+            padding: 15px 0;
+            margin-top: 10px;
+            width: auto;
+            min-width: 400px;
         }
 
         .hero-tagline p {
-            color: #022F40;
-            font-size: 1.3rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
+            color: #ffffff; /* White text for readability */
+            font-size: 1.15rem; /* Slightly smaller */
+            font-weight: 500;
+            letter-spacing: 1px;
+            /* Not all caps */
         }
 
         /* Main Content */
@@ -141,7 +162,6 @@
             grid-template-columns: 1fr 1fr;
             gap: 60px;
             width: 100%;
-            margin-top: 40px;
         }
 
         .question-box h3 {
@@ -149,36 +169,49 @@
             margin-bottom: 20px;
             text-transform: uppercase;
             font-size: 1.2rem;
-            letter-spacing: 1px;
         }
 
         .question-box ul { list-style: none; }
         .question-box li { margin-bottom: 12px; font-size: 1.1rem; }
 
-        /* States */
+        /* Toggle States */
         .header-home { height: 800px; }
-        .header-internal { height: 200px; }
+        .header-internal { height: 250px; }
         .hidden { display: none; }
 
-        /* Mobile & Tablet Optimization */
-        @media (max-width: 1100px) {
-            .container { width: 85%; }
-            nav { padding: 30px 0; }
-        }
-
-        @media (max-width: 768px) {
+        /* --- MOBILE & TABLET LAYOUT (Triggered at 1300px) --- */
+        @media (max-width: 1300px) {
             .container { width: 90%; }
+            
             nav {
-                flex-direction: column;
                 align-items: center;
-                gap: 25px;
+                padding: 25px 0;
             }
+
+            .hamburger { display: block; }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%; /* Hidden off-screen */
+                height: 100vh;
+                width: 250px;
+                background-color: #1b4332;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: 0.5s;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.3);
+            }
+
+            .nav-links.active { right: 0; }
+
             .logo-container img { width: 220px; }
-            .nav-links { gap: 20px; padding-bottom: 0; }
-            .header-home { height: auto; min-height: 700px; }
-            .hero-content { padding: 60px 0; }
+            
             .questions-grid { grid-template-columns: 1fr; }
-            .hero-tagline p { font-size: 1.1rem; padding: 0 10px; }
+            .hero-content h1 { line-height: 1.3; }
+            .hero-tagline { min-width: 90%; }
+            header { background-attachment: scroll; }
         }
     </style>
 </head>
@@ -190,7 +223,14 @@
                 <a href="#" class="logo-container" onclick="updateHeader(true)">
                     <img src="dr-logo.png" alt="DR Logo">
                 </a>
-                <ul class="nav-links">
+
+                <button class="hamburger" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <ul class="nav-links" id="navLinks">
                     <li><a href="#" onclick="updateHeader(true)">About</a></li>
                     <li><a href="#" onclick="updateHeader(false)">Services</a></li>
                     <li><a href="#" onclick="updateHeader(false)">Projects</a></li>
@@ -247,10 +287,17 @@
     </main>
 
     <script>
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+
         function updateHeader(isHome) {
             const header = document.getElementById('mainHeader');
             const hero = document.getElementById('heroText');
             
+            // Close mobile menu if open
+            document.getElementById('navLinks').classList.remove('active');
+
             if (isHome) {
                 header.classList.remove('header-internal');
                 header.classList.add('header-home');
