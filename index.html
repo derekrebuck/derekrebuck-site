@@ -21,7 +21,7 @@
             text-align: center;
         }
 
-        /* Header Styling - Lightened Overlay */
+        /* Header Styling */
         header {
             background: 
                 linear-gradient(rgba(27, 67, 50, 0.2), rgba(27, 67, 50, 0.3)), 
@@ -46,38 +46,39 @@
             align-items: center;
         }
 
-        /* Navigation */
+        /* Navigation - Bottom Aligned */
         nav {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            padding: 30px 0;
+            align-items: flex-end; /* Aligns logo and menu to the bottom baseline */
+            padding: 40px 0;
             width: 100%;
         }
 
         .logo-container img {
-            height: 60px;
-            width: auto;
+            width: 280px; /* Increased size for your 1816px wide logo */
+            height: auto;
             display: block;
         }
 
         .nav-links {
             list-style: none;
             display: flex;
-            gap: 30px;
+            gap: 40px;
+            padding-bottom: 5px; /* Fine-tuning the baseline alignment */
         }
 
         .nav-links a {
-            color: #95a6b2; /* Custom Nav Color */
+            color: #95a6b2;
             text-decoration: none;
             font-weight: 700;
             text-transform: uppercase;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            transition: opacity 0.3s;
+            font-size: 0.95rem;
+            letter-spacing: 1.5px;
+            transition: color 0.3s;
         }
 
-        .nav-links a:hover { opacity: 0.8; }
+        .nav-links a:hover { color: #CAC16A; }
 
         /* Hero Content */
         .hero-content {
@@ -86,83 +87,98 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding-bottom: 80px;
+            padding-bottom: 120px;
         }
 
         .hero-content h1 {
-            font-size: clamp(2.2rem, 6vw, 4.5rem);
+            font-size: clamp(2.5rem, 6vw, 5rem);
             font-weight: 900;
-            line-height: 1.1;
-            margin-bottom: 30px;
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.3); /* Adds readability with light overlay */
+            line-height: 1.4; /* Increased vertical space between lines */
+            margin-bottom: 40px;
+            text-shadow: none; /* Shadow removed */
         }
 
-        /* Specific Heading Colors */
         .text-local { color: #95a6b2; }
         .text-global { color: #CAC16A; }
 
-        /* Sub-text Highlight Box */
-        .hero-box {
-            background-color: #CAC16A; /* Box Color */
-            color: #022F40;            /* Text Color */
-            padding: 15px 30px;
-            border-radius: 4px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            max-width: 650px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        /* Redesigned Sub-text Styling */
+        .hero-tagline {
+            border-top: 2px solid #CAC16A;
+            border-bottom: 2px solid #CAC16A;
+            padding: 20px 0;
+            margin-top: 20px;
+            width: 100%;
+            max-width: 700px;
+            background: rgba(202, 193, 106, 0.1); /* Subtle hint of the gold */
+        }
+
+        .hero-tagline p {
+            color: #022F40;
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
 
         /* Main Content */
-        main { padding: 80px 0; }
+        main { padding: 100px 0; }
 
         .intro-title {
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: 800;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
             color: #1b4332;
         }
 
         .intro-text {
-            font-size: 1.15rem;
-            margin-bottom: 50px;
+            font-size: 1.25rem;
+            margin-bottom: 60px;
             max-width: 850px;
         }
 
         .questions-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 40px;
+            gap: 60px;
             width: 100%;
             margin-top: 40px;
         }
 
         .question-box h3 {
             color: #1b4332;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             text-transform: uppercase;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             letter-spacing: 1px;
         }
 
         .question-box ul { list-style: none; }
-        .question-box li { margin-bottom: 10px; font-size: 1rem; }
+        .question-box li { margin-bottom: 12px; font-size: 1.1rem; }
 
-        /* Header Height States */
+        /* States */
         .header-home { height: 800px; }
         .header-internal { height: 200px; }
         .hidden { display: none; }
 
-        /* Mobile Optimization */
+        /* Mobile & Tablet Optimization */
+        @media (max-width: 1100px) {
+            .container { width: 85%; }
+            nav { padding: 30px 0; }
+        }
+
         @media (max-width: 768px) {
             .container { width: 90%; }
             nav {
                 flex-direction: column;
-                gap: 20px;
+                align-items: center;
+                gap: 25px;
             }
-            .header-home { height: auto; min-height: 600px; }
-            .hero-content { padding: 40px 0; }
+            .logo-container img { width: 220px; }
+            .nav-links { gap: 20px; padding-bottom: 0; }
+            .header-home { height: auto; min-height: 700px; }
+            .hero-content { padding: 60px 0; }
             .questions-grid { grid-template-columns: 1fr; }
+            .hero-tagline p { font-size: 1.1rem; padding: 0 10px; }
         }
     </style>
 </head>
@@ -187,8 +203,9 @@
                     <span class="text-local">LOCAL DESIGNS</span><br>
                     <span class="text-global">GLOBAL IMPACT</span>
                 </h1>
-                <div class="hero-box">
-                    Creative, engaging content that elevates brands and drives results
+                
+                <div class="hero-tagline">
+                    <p>Creative, engaging content that elevates brands and drives results</p>
                 </div>
             </div>
         </div>
@@ -203,7 +220,7 @@
                 thoughtful approach to every project I take on.
             </p>
 
-            <p><strong>Before I begin designing, I ask key questions to ensure clarity and intent:</strong></p>
+            <p style="margin-bottom: 20px;"><strong>Before I begin designing, I ask key questions to ensure clarity and intent:</strong></p>
 
             <div class="questions-grid">
                 <div class="question-box">
