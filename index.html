@@ -130,8 +130,24 @@
         .submit-btn { background-color: #1b4332; color: white; border: none; padding: 15px 40px; font-weight: 700; border-radius: 4px; cursor: pointer; width: 100%; transition: 0.3s; }
         
         footer { width: 100%; color: white; padding-bottom: 40px; background: linear-gradient(rgba(27, 67, 50, 0.3), rgba(27, 67, 50, 0.3)), url('Green Background.png'); background-size: cover; overflow: hidden; }
-        .footer-banner-container { width: 100%; height: 350px; overflow: hidden; display: flex; justify-content: center; align-items: center; }
-        .footer-banner-img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.5); transform-origin: center; }
+/* Constrains the vertical size of the footer banner */
+.footer-banner-container { 
+    width: 100%; 
+    height: 150px; /* Adjust this to 100px or 200px based on your preference */
+    overflow: hidden; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+}
+
+/* Keeps the 50% zoom but ensures it fills the new smaller height */
+.footer-banner-img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; /* Ensures the image covers the area without distorting */
+    transform: scale(1.5); 
+    transform-origin: center; 
+}
         
         /* Footer Desktop Alignment */
         .footer-cols { display: flex; justify-content: space-between; align-items: flex-end; margin-top: 40px; width: 100%; }
