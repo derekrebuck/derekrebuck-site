@@ -6,186 +6,255 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <title>Derek Rebuck | Visual Design & Digital Marketing</title>
     <style>
-        /* Base Reset & Typography */
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
-        body { background-color: #ffffff; line-height: 1.8; color: #333; text-align: center; overflow-x: hidden; }
+      /* 1. Base Reset & Typography */
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
+}
 
-        .container { 
-            width: 80%; 
-            max-width: 1000px; 
-            margin: 0 auto; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-        }
+body { 
+    background-color: #ffffff; 
+    line-height: 1.8; 
+    color: #333; 
+    text-align: center; 
+    overflow-x: hidden; 
+}
 
-        /* Shared Background Style */
-        .themed-bg {
-            background: linear-gradient(rgba(27, 67, 50, 0.3), rgba(27, 67, 50, 0.4)), url('Green Background.png'); 
-            background-size: cover; background-position: center; background-attachment: fixed;
-            color: white; width: 100%;
-        }
-
-        /* Header & Nav */
-        header { padding-bottom: 60px; }
-        nav { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: flex-end; 
-            padding: 40px 0; 
-            width: 100%; 
-            z-index: 100; 
-        }
-        .logo-container img { width: 280px; height: auto; display: block; }
-        
-        .nav-links { list-style: none; display: flex; gap: 40px; padding-bottom: 5px; }
-        .nav-links a { 
-            color: #95a6b2; 
-            text-decoration: none; 
-            font-weight: 500; 
-            text-transform: uppercase; 
-            font-size: 1rem; 
-            letter-spacing: 1.5px; 
-            position: relative; 
-            padding-bottom: 15px; /* Vertical space for underline */
-        }
-        .nav-links a::after { 
-            content: ''; position: absolute; width: 0; height: 2px; 
-            bottom: 0; left: 0; background-color: #CAC16A; transition: width 0.3s; 
-        }
-        .nav-links a:hover::after { width: 100%; }
-
-        /* Hero */
-        .hero-content { padding: 60px 0 80px; } 
-        .hero-content h1 { font-size: clamp(3rem, 8vw, 5rem); font-weight: 900; line-height: 1.1; margin-bottom: 15px; }
-        .text-local { color: #95a6b2; }
-        .text-global { color: #CAC16A; }
-        .hero-tagline { border-top: 4px solid #CAC16A; border-bottom: 4px solid #CAC16A; padding: 8px 15px; display: inline-block; }
-        .hero-tagline p { color: #ffffff; font-size: 1.1rem; font-weight: 400; }
-
-        /* Section Titles */
-        section { padding: 40px 0; width: 100%; }
-        .section-title { color: #1b4332; font-size: 2.2rem; margin-bottom: 15px; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; }
-        .unified-text { font-size: 1.15rem; line-height: 1.8; } 
-
-        /* Let's Connect Button - Rounded Rectangle */
-        .btn-connect {
-            display: inline-block; 
-            color: #022F40; 
-            padding: 12px 35px;
-            text-decoration: none; 
-            font-weight: 700;
-            margin-top: 30px; 
-            border: 2px solid #022F40;
-            border-radius: 50px;
-            position: relative;
-            transition: 0.3s;
-        }
-        .btn-connect::after { 
-            content: ''; position: absolute; width: 0; height: 3px; 
-            bottom: 6px; left: 25%; background-color: #CAC16A; transition: width 0.3s; 
-        }
-        .btn-connect:hover { background-color: #022F40; color: #CAC16A; }
-        .btn-connect:hover::after { width: 50%; }
-
-        /* Content Grid */
-        .image-row-gap { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 30px; margin: 30px 0; width: 100%; }
-        .image-row-gap img { width: 100%; aspect-ratio: 1160 / 772; object-fit: cover; border-radius: 4px; }
-
-        /* Portfolio Banner */
-        .portfolio-banner { display: grid; grid-template-columns: 1fr 1fr 1fr; width: 100vw; margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%); }
-        .portfolio-item { position: relative; height: 350px; overflow: hidden; }
-        .portfolio-item img { width: 100%; height: 100%; object-fit: cover; }
-        .portfolio-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(27, 67, 50, 0.9); color: white; display: flex; flex-direction: column; justify-content: center; align-items: center; opacity: 0; transition: 0.4s; padding: 30px; }
-        .portfolio-item:hover .portfolio-overlay { opacity: 1; }
-
-        /* Services */
-        .services-container { display: grid; grid-template-columns: repeat(6, 1fr); gap: 40px; margin-top: 40px; width: 100%; }
-        .service-link { grid-column: span 2; text-decoration: none; display: flex; flex-direction: column; align-items: center; }
-        .service-link.center-bottom-1 { grid-column: 2 / span 2; }
-        .service-link.center-bottom-2 { grid-column: 4 / span 2; }
-        .icon-box { position: relative; width: 120px; height: 120px; margin-bottom: 15px; }
-        .icon-box img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; transition: opacity 0.3s; }
-        .icon-hover { opacity: 0; }
-        .service-link:hover .icon-standard { opacity: 0; }
-        .service-link:hover .icon-hover { opacity: 1; }
-        .service-link p { font-weight: 700; color: #1b4332; font-size: 1rem; position: relative; padding-bottom: 8px; }
-        .service-link p::after { content: ''; position: absolute; width: 0; height: 2px; bottom: 0; left: 0; background-color: #CAC16A; transition: width 0.3s; }
-        .service-link:hover p::after { width: 100%; }
-
-        /* Carousel */
-        .testimonials { padding: 80px 0; }
-        .carousel-wrapper { position: relative; width: 100%; display: flex; align-items: center; justify-content: center; }
-        .carousel { display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; -ms-overflow-style: none; padding: 20px 0; width: 90%; }
-        .carousel::-webkit-scrollbar { display: none; }
-        .testimonial-card { min-width: calc(33.333% - 14px); scroll-snap-align: center; background: linear-gradient(rgba(149, 166, 178, 0.85), rgba(149, 166, 178, 0.85)), url('https://via.placeholder.com/400x300'); background-size: cover; padding: 40px 20px; border-radius: 10px; color: #1b4332; }
-        .arrow { background: none; border: none; color: #CAC16A; font-size: 3rem; cursor: pointer; transition: 0.3s; z-index: 10; }
-        .arrow:hover { color: white; }
-
-        /* Contact & Footer */
-        .contact-form { width: 100%; max-width: 600px; text-align: left; margin: 30px auto; }
-        .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; font-weight: 700; color: #1b4332; margin-bottom: 5px; }
-        .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; }
-        .submit-btn { background-color: #1b4332; color: white; border: none; padding: 15px 40px; font-weight: 700; border-radius: 4px; cursor: pointer; width: 100%; transition: 0.3s; }
-        
-        footer { width: 100%; color: white; padding-bottom: 40px; background: linear-gradient(rgba(27, 67, 50, 0.3), rgba(27, 67, 50, 0.3)), url('Green Background.png'); background-size: cover; overflow: hidden; }
-/* Constrains the vertical size of the footer banner */
-.footer-banner-container { 
-    width: 100%; 
-    height: 150px; /* Adjust this to 100px or 200px based on your preference */
-    overflow: hidden; 
+.container { 
+    width: 80%; 
+    max-width: 1000px; 
+    margin: 0 auto; 
     display: flex; 
-    justify-content: center; 
+    flex-direction: column; 
     align-items: center; 
 }
 
-/* Keeps the 50% zoom but ensures it fills the new smaller height */
-.footer-banner-img { 
+/* 2. Shared Background Style (Header & Testimonials) */
+.themed-bg {
+    background: linear-gradient(rgba(27, 67, 50, 0.3), rgba(27, 67, 50, 0.4)), url('Green Background.png'); 
+    background-size: cover; 
+    background-position: center; 
+    background-attachment: fixed;
+    color: white; 
     width: 100%; 
-    height: 100%; 
-    object-fit: cover; /* Ensures the image covers the area without distorting */
-    transform: scale(1.5); 
+}
+
+/* 3. Header & Navigation */
+header { padding-bottom: 60px; }
+
+nav { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: flex-end; 
+    padding: 40px 0; 
+    width: 100%; 
+    z-index: 100; 
+    position: relative;
+}
+
+.logo-container img { width: 280px; height: auto; display: block; }
+
+.menu-icon {
+    display: none; /* Hidden on desktop */
+    font-size: 2rem;
+    color: #95a6b2;
+    cursor: pointer;
+    padding-bottom: 5px;
+}
+
+.nav-links { list-style: none; display: flex; gap: 40px; padding-bottom: 5px; }
+
+.nav-links a { 
+    color: #95a6b2; 
+    text-decoration: none; 
+    font-weight: 500; 
+    text-transform: uppercase; 
+    font-size: 1rem; 
+    letter-spacing: 1.5px; 
+    position: relative; 
+    padding-bottom: 15px; 
+}
+
+.nav-links a::after { 
+    content: ''; 
+    position: absolute; 
+    width: 0; 
+    height: 2px; 
+    bottom: 0; 
+    left: 0; 
+    background-color: #CAC16A; 
+    transition: width 0.3s; 
+}
+
+.nav-links a:hover::after { width: 100%; }
+
+/* 4. Hero Content */
+.hero-content { padding: 60px 0 80px; } 
+.hero-content h1 { font-size: clamp(3rem, 8vw, 5rem); font-weight: 900; line-height: 1.1; margin-bottom: 15px; }
+.text-local { color: #95a6b2; }
+.text-global { color: #CAC16A; }
+.hero-tagline { 
+    border-top: 4px solid #CAC16A; 
+    border-bottom: 4px solid #CAC16A; 
+    padding: 8px 15px; 
+    display: inline-block; 
+}
+.hero-tagline p { color: #ffffff; font-size: 1.1rem; font-weight: 400; }
+
+/* 5. Sections & Button */
+section { padding: 40px 0; width: 100%; }
+.section-title { color: #1b4332; font-size: 2.2rem; margin-bottom: 15px; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; }
+.unified-text { font-size: 1.15rem; line-height: 1.8; } 
+
+.btn-connect {
+    display: inline-block; 
+    color: #022F40; 
+    padding: 12px 35px;
+    text-decoration: none; 
+    font-weight: 700;
+    margin-top: 30px; 
+    border: 2px solid #022F40;
+    border-radius: 50px;
+    position: relative;
+    transition: 0.3s;
+}
+.btn-connect::after { 
+    content: ''; position: absolute; width: 0; height: 3px; 
+    bottom: 6px; left: 25%; background-color: #CAC16A; transition: width 0.3s; 
+}
+.btn-connect:hover { background-color: #022F40; color: #CAC16A; }
+.btn-connect:hover::after { width: 50%; }
+
+/* 6. Content Grid & Portfolio */
+.image-row-gap { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 30px; margin: 30px 0; width: 100%; }
+.image-row-gap img { width: 100%; aspect-ratio: 1160 / 772; object-fit: cover; border-radius: 4px; }
+
+.portfolio-banner { display: grid; grid-template-columns: 1fr 1fr 1fr; width: 100vw; margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%); }
+.portfolio-item { position: relative; height: 350px; overflow: hidden; }
+.portfolio-item img { width: 100%; height: 100%; object-fit: cover; }
+.portfolio-overlay { 
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(27, 67, 50, 0.9); 
+    color: white; display: flex; flex-direction: column; justify-content: center; align-items: center; 
+    opacity: 0; transition: 0.4s; padding: 30px; 
+}
+.portfolio-item:hover .portfolio-overlay { opacity: 1; }
+
+/* 7. Services */
+.services-container { display: grid; grid-template-columns: repeat(6, 1fr); gap: 40px; margin-top: 40px; width: 100%; }
+.service-link { grid-column: span 2; text-decoration: none; display: flex; flex-direction: column; align-items: center; }
+.service-link.center-bottom-1 { grid-column: 2 / span 2; }
+.service-link.center-bottom-2 { grid-column: 4 / span 2; }
+.icon-box { position: relative; width: 120px; height: 120px; margin-bottom: 15px; }
+.icon-box img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; transition: opacity 0.3s; }
+.icon-hover { opacity: 0; }
+.service-link:hover .icon-standard { opacity: 0; }
+.service-link:hover .icon-hover { opacity: 1; }
+.service-link p { font-weight: 700; color: #1b4332; font-size: 1rem; position: relative; padding-bottom: 8px; }
+.service-link p::after { content: ''; position: absolute; width: 0; height: 2px; bottom: 0; left: 0; background-color: #CAC16A; transition: width 0.3s; }
+.service-link:hover p::after { width: 100%; }
+
+/* 8. Carousel */
+.testimonials { padding: 80px 0; }
+.carousel-wrapper { position: relative; width: 100%; display: flex; align-items: center; justify-content: center; }
+.carousel { display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; -ms-overflow-style: none; padding: 20px 0; width: 90%; }
+.carousel::-webkit-scrollbar { display: none; }
+.testimonial-card { min-width: calc(33.333% - 14px); scroll-snap-align: center; background: linear-gradient(rgba(149, 166, 178, 0.85), rgba(149, 166, 178, 0.85)), url('https://via.placeholder.com/400x300'); background-size: cover; padding: 40px 20px; border-radius: 10px; color: #1b4332; }
+.arrow { background: none; border: none; color: #CAC16A; font-size: 3rem; cursor: pointer; transition: 0.3s; z-index: 10; }
+.arrow:hover { color: white; }
+
+/* 9. Contact & Form */
+.contact-form { width: 100%; max-width: 600px; text-align: left; margin: 30px auto; }
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; font-weight: 700; color: #1b4332; margin-bottom: 5px; }
+.form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem; }
+.submit-btn { background-color: #1b4332; color: white; border: none; padding: 15px 40px; font-weight: 700; border-radius: 4px; cursor: pointer; width: 100%; transition: 0.3s; }
+.submit-btn:hover { background-color: #022F40; color: #CAC16A; }
+
+/* 10. Footer (Final Layout) */
+footer { 
+    width: 100%; color: white; padding-bottom: 40px; 
+    background: linear-gradient(rgba(27, 67, 50, 0.3), rgba(27, 67, 50, 0.3)), url('Green Background.png'); 
+    background-size: cover; overflow: hidden; 
+}
+
+.footer-banner-container { 
+    width: 100%; height: 150px; /* Constrained Height */
+    overflow: hidden; display: flex; justify-content: center; align-items: center; 
+}
+
+.footer-banner-img { 
+    width: 100%; height: 100%; object-fit: cover; 
+    transform: scale(1.5); /* 50% Zoom */
     transform-origin: center; 
 }
-        
-        /* Footer Desktop Alignment */
-        .footer-cols { display: flex; justify-content: space-between; align-items: flex-end; margin-top: 40px; width: 100%; }
-        .footer-left { text-align: left; flex: 1; }
-        .footer-right { text-align: right; flex: 1; display: flex; flex-direction: column; align-items: flex-end; }
-        .social-row { display: flex; gap: 15px; margin-bottom: 10px; }
-        .social-row img { width: 24px; height: 24px; }
 
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .image-row-gap, .portfolio-banner, .services-container { grid-template-columns: 1fr; }
-            .service-link, .service-link.center-bottom-1, .service-link.center-bottom-2 { grid-column: span 1; }
-            .testimonial-card { min-width: 90%; }
-            .footer-cols { flex-direction: column; text-align: center; align-items: center; gap: 30px; }
-            .footer-left, .footer-right { text-align: center; align-items: center; }
-            .footer-banner-img { transform: scale(1.2); }
-        }
+.footer-cols { display: flex; justify-content: space-between; align-items: flex-end; margin-top: 40px; width: 100%; }
+.footer-left { text-align: left; flex: 1; }
+.footer-right { text-align: right; flex: 1; display: flex; flex-direction: column; align-items: flex-end; }
+.social-row { display: flex; gap: 15px; margin-bottom: 10px; }
+.social-row img { width: 24px; height: 24px; }
+
+/* 11. Media Queries (Mobile Fixes) */
+@media (max-width: 768px) {
+    .menu-icon { display: block; }
+    
+    .nav-links {
+        display: none; /* Mobile menu hidden by default */
+        flex-direction: column;
+        position: absolute;
+        top: 100px;
+        left: 0;
+        width: 100%;
+        background-color: rgba(27, 67, 50, 0.95);
+        padding: 20px 0;
+        gap: 20px;
+        z-index: 1000;
+    }
+
+    .nav-links.active { display: flex; } /* Toggle class for JS */
+
+    .image-row-gap, .portfolio-banner, .services-container { grid-template-columns: 1fr; }
+    .service-link, .service-link.center-bottom-1, .service-link.center-bottom-2 { grid-column: span 1; }
+    .testimonial-card { min-width: 90%; }
+    
+    .footer-cols { flex-direction: column; text-align: center; align-items: center; gap: 30px; }
+    .footer-left, .footer-right { text-align: center; align-items: center; }
+    .footer-banner-img { transform: scale(1.2); }
+}
     </style>
 </head>
 <body>
 
-    <header class="themed-bg">
-        <div class="container">
-            <nav>
-                <a href="index.html" class="logo-container"><img src="dr-logo.png" alt="DR Logo"></a>
-                <ul class="nav-links">
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="projects.html">Projects</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
-            <div class="hero-content">
-                <h1><span class="text-local">LOCAL DESIGNS</span><br><span class="text-global">GLOBAL IMPACT</span></h1>
-                <div class="hero-tagline"><p>Creative, engaging content that elevates brands and drives results</p></div>
+  <header class="themed-bg">
+    <div class="container">
+        <nav>
+            <a href="index.html" class="logo-container">
+                <img src="dr-logo.png" alt="Derek Rebuck Logo">
+            </a>
+            
+            <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+
+        <div class="hero-content">
+            <h1>
+                <span class="text-local">LOCAL DESIGNS</span><br>
+                <span class="text-global">GLOBAL IMPACT</span>
+            </h1>
+            <div class="hero-tagline">
+                <p>Creative, engaging content that elevates brands and drives results</p>
             </div>
         </div>
-    </header>
+    </div>
+</header>
     <main class="container">
         <section style="padding-top: 30px;">
             <h2 class="section-title">DESIGN WITH PURPOSE</h2>
@@ -347,15 +416,45 @@
     </footer>
 
     <script>
-        function scrollCarousel(direction) {
-            const carousel = document.getElementById('testimonialCarousel');
-            const cardWidth = carousel.querySelector('.testimonial-card').offsetWidth + 20;
-            carousel.scrollBy({ left: direction * cardWidth, behavior: 'smooth' });
-        }
+       /* 1. Mobile Menu Toggle Logic */
+function toggleMenu() {
+    const nav = document.getElementById('navLinks');
+    // Toggles the 'active' class defined in your CSS to show/hide the menu
+    nav.classList.toggle('active');
+}
 
-        document.getElementById('rebuckForm').onsubmit = function() {
-            alert("Thank you for reaching out. Derek will reach out shortly to respond to your inquiry.");
-        };
+/* 2. Testimonial Carousel Scroll Logic */
+function scrollCarousel(direction) {
+    const carousel = document.getElementById('testimonialCarousel');
+    // Calculate the width of one card plus its gap (20px)
+    const cardWidth = carousel.querySelector('.testimonial-card').offsetWidth + 20;
+    
+    // Smoothly scroll the container left or right
+    carousel.scrollBy({ 
+        left: direction * cardWidth, 
+        behavior: 'smooth' 
+    });
+}
+
+/* 3. Contact Form Submission Logic */
+document.getElementById('rebuckForm').onsubmit = function(event) {
+    // Show the confirmation alert
+    alert("Thank you for reaching out. Derek will reach out shortly to respond to your inquiry.");
+    
+    // Note: The form will still proceed with the 'mailto' action 
+    // defined in your HTML 'action' attribute after the alert is closed.
+};
+
+/* 4. Optional: Close Mobile Menu on Link Click */
+// This ensures that when a user clicks a link on mobile, the menu closes
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        const nav = document.getElementById('navLinks');
+        if (nav.classList.contains('active')) {
+            nav.classList.remove('active');
+        }
+    });
+});
     </script>
 </body>
 </html>
