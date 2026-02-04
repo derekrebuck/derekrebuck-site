@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <title>Local Designs | Global Impact | Derek Rebuck</title>
+    <title>Local Designs | Global Impact</title>
     <style>
-        /* Base Reset & Typography */
+        /* Base Reset */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
         body { background-color: #ffffff; line-height: 1.8; color: #333; text-align: center; overflow-x: hidden; }
 
+        /* Unified Container Logic */
         .container { 
             width: 80%; 
             max-width: 1000px; 
@@ -19,158 +20,124 @@
             align-items: center; 
         }
 
-        /* Shared Background Style for Header & Testimonials */
-        .themed-bg {
+        /* Header & Hero */
+        header {
             background: linear-gradient(rgba(27, 67, 50, 0.3), rgba(27, 67, 50, 0.4)), url('Green Background.png'); 
-            background-size: cover; 
-            background-position: center; 
-            background-attachment: fixed;
-            color: white; 
-            width: 100%; 
+            background-size: cover; background-position: center; background-attachment: fixed;
+            color: white; width: 100%; display: flex; flex-direction: column; align-items: center; position: relative;
         }
 
-        /* Header & Nav */
-        header { padding-bottom: 60px; }
-        nav { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: flex-end; 
-            padding: 40px 0; 
-            width: 100%; 
-            z-index: 100; 
-        }
+        nav { display: flex; justify-content: space-between; align-items: flex-end; padding: 40px 0; width: 100%; z-index: 100; }
         .logo-container img { width: 280px; height: auto; display: block; }
         
         .nav-links { list-style: none; display: flex; gap: 40px; padding-bottom: 5px; }
-        .nav-links a { 
-            color: #95a6b2; 
-            text-decoration: none; 
-            font-weight: 500; 
-            text-transform: uppercase; 
-            font-size: 1rem; 
-            letter-spacing: 1.5px; 
-            position: relative; 
-            padding-bottom: 12px; 
-        }
-        .nav-links a::after { 
-            content: ''; 
-            position: absolute; 
-            width: 0; 
-            height: 2px; 
-            bottom: 0; 
-            left: 0; 
-            background-color: #CAC16A; 
-            transition: width 0.3s; 
-        }
+        .nav-links a { color: #95a6b2; text-decoration: none; font-weight: 500; text-transform: uppercase; font-size: 1rem; letter-spacing: 1.5px; position: relative; }
+        .nav-links a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: 0; left: 0; background-color: #CAC16A; transition: width 0.3s; }
         .nav-links a:hover::after { width: 100%; }
 
-        /* Hero Content */
+        .hamburger { display: none; cursor: pointer; background: none; border: none; z-index: 200; }
+        .hamburger span { display: block; width: 30px; height: 3px; background-color: #95a6b2; margin: 6px 0; }
+
+        /* Hero Spacing Tightened */
         .hero-content { padding: 60px 0 80px; } 
         .hero-content h1 { font-size: clamp(3rem, 8vw, 5rem); font-weight: 900; line-height: 1.1; margin-bottom: 15px; }
         .text-local { color: #95a6b2; }
         .text-global { color: #CAC16A; }
-        .hero-tagline { 
-            border-top: 4px solid #CAC16A; 
-            border-bottom: 4px solid #CAC16A; 
-            padding: 8px 15px; 
-            display: inline-block; 
-        }
+        .hero-tagline { border-top: 4px solid #CAC16A; border-bottom: 4px solid #CAC16A; padding: 8px 15px; display: inline-block; }
         .hero-tagline p { color: #ffffff; font-size: 1.1rem; font-weight: 400; }
 
-        /* Content Section Styling */
-        section { padding: 40px 0; width: 100%; }
+        /* Typography Styling */
         .section-title { color: #1b4332; font-size: 2.2rem; margin-bottom: 15px; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; }
         .unified-text { font-size: 1.15rem; line-height: 1.8; } 
 
-        /* Let's Connect Button - Rounded Rectangle */
-        .btn-connect {
-            display: inline-block; 
-            color: #022F40; 
-            padding: 12px 35px;
-            text-decoration: none; 
-            font-weight: 700;
-            margin-top: 30px; 
-            border: 2px solid #022F40;
-            border-radius: 50px;
-            position: relative;
-            transition: 0.3s;
-        }
-        .btn-connect::after { 
-            content: ''; 
-            position: absolute; 
-            width: 0; 
-            height: 3px; 
-            bottom: 6px; 
-            left: 25%; 
-            background-color: #CAC16A; 
-            transition: width 0.3s; 
-        }
-        .btn-connect:hover { background-color: #022F40; color: #CAC16A; }
-        .btn-connect:hover::after { width: 50%; }
+        /* Content Sections */
+        section { padding: 40px 0; width: 100%; }
 
-        /* [Additional styles for part 2: images, services, carousel, form, footer] */
         .image-row-gap { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 30px; margin: 30px 0; width: 100%; }
         .image-row-gap img { width: 100%; aspect-ratio: 1160 / 772; object-fit: cover; border-radius: 4px; }
-        
-        .portfolio-banner { display: grid; grid-template-columns: 1fr 1fr 1fr; width: 100vw; margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%); }
+
+        .btn-connect {
+            display: inline-block; background-color: #022F40; color: white;
+            padding: 20px 45px; text-decoration: none; font-weight: 700;
+            border-radius: 4px; margin-top: 30px; transition: 0.3s;
+        }
+        .btn-connect:hover { color: #CAC16A; }
+
+        /* Portfolio Banner - 350px height */
+        .portfolio-banner { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr 1fr; 
+            width: 100vw; 
+            margin-left: calc(-50vw + 50%); 
+            margin-right: calc(-50vw + 50%); 
+            margin-top: 20px; 
+        }
         .portfolio-item { position: relative; height: 350px; overflow: hidden; }
         .portfolio-item img { width: 100%; height: 100%; object-fit: cover; }
-        .portfolio-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(27, 67, 50, 0.9); color: white; display: flex; flex-direction: column; justify-content: center; align-items: center; opacity: 0; transition: 0.4s; padding: 30px; }
+        .portfolio-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(27, 67, 50, 0.9); color: white;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            opacity: 0; transition: 0.4s; padding: 30px;
+        }
+        .portfolio-overlay p { font-size: 0.9rem; margin-top: 10px; line-height: 1.4; max-width: 250px; }
         .portfolio-item:hover .portfolio-overlay { opacity: 1; }
 
-        .services-container { display: grid; grid-template-columns: repeat(6, 1fr); gap: 40px; margin-top: 40px; width: 100%; }
-        .service-link { grid-column: span 2; text-decoration: none; display: flex; flex-direction: column; align-items: center; }
-        .service-link.center-bottom-1 { grid-column: 2 / span 2; }
-        .service-link.center-bottom-2 { grid-column: 4 / span 2; }
-        .icon-box { position: relative; width: 120px; height: 120px; margin-bottom: 15px; }
-        .icon-box img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; transition: opacity 0.3s; }
+        /* Services Icon Size Restored to 120px */
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 40px;
+            margin-top: 40px;
+            width: 100%;
+        }
+        .service-item { grid-column: span 2; display: flex; flex-direction: column; align-items: center; cursor: pointer; }
+        .service-item.center-bottom-1 { grid-column: 2 / span 2; }
+        .service-item.center-bottom-2 { grid-column: 4 / span 2; }
+        
+        .icon-box { 
+            position: relative;
+            width: 120px; 
+            height: 120px; 
+            margin-bottom: 15px;
+        }
+        .icon-box img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transition: opacity 0.3s ease;
+        }
         .icon-hover { opacity: 0; }
-        .service-link:hover .icon-standard { opacity: 0; }
-        .service-link:hover .icon-hover { opacity: 1; }
-        .service-link p { font-weight: 700; color: #1b4332; font-size: 1rem; position: relative; padding-bottom: 5px; }
-        .service-link p::after { content: ''; position: absolute; width: 0; height: 2px; bottom: 0; left: 0; background-color: #CAC16A; transition: width 0.3s; }
-        .service-link:hover p::after { width: 100%; }
+        .service-item:hover .icon-standard { opacity: 0; }
+        .service-item:hover .icon-hover { opacity: 1; }
 
-        .testimonials { padding: 80px 0; }
-        .carousel-wrapper { position: relative; width: 100%; display: flex; align-items: center; justify-content: center; }
-        .carousel { display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; -ms-overflow-style: none; padding: 20px 0; width: 90%; }
-        .carousel::-webkit-scrollbar { display: none; }
-        .testimonial-card { min-width: calc(33.333% - 14px); scroll-snap-align: center; background: linear-gradient(rgba(149, 166, 178, 0.85), rgba(149, 166, 178, 0.85)), url('https://via.placeholder.com/400x300'); background-size: cover; padding: 40px 20px; border-radius: 10px; color: #1b4332; }
-        .arrow { background: none; border: none; color: #CAC16A; font-size: 3rem; cursor: pointer; transition: 0.3s; z-index: 10; }
-        .arrow:hover { color: white; }
+        .service-item p { font-weight: 700; color: #1b4332; font-size: 1rem; }
 
-        .contact-form { width: 100%; max-width: 600px; text-align: left; margin: 30px auto; }
-        .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; font-weight: 700; color: #1b4332; margin-bottom: 5px; }
-        .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem; }
-        .submit-btn { background-color: #1b4332; color: white; border: none; padding: 15px 40px; font-weight: 700; border-radius: 4px; cursor: pointer; width: 100%; transition: 0.3s; }
-        .submit-btn:hover { background-color: #022F40; color: #CAC16A; }
-
-        .footer-line { width: 100%; height: 2px; background-color: #1b4332; }
-        footer { width: 100%; color: white; padding-bottom: 40px; background: linear-gradient(rgba(27, 67, 50, 0.3), rgba(27, 67, 50, 0.3)), url('Green Background.png'); background-size: cover; }
-        .footer-banner-img { width: 100%; height: auto; display: block; }
-        .footer-cols { display: flex; justify-content: space-between; align-items: flex-start; margin-top: 40px; }
-        .footer-left { text-align: left; flex: 1; }
-        .footer-right { text-align: right; flex: 1; display: flex; flex-direction: column; align-items: flex-end; }
-        .social-row { display: flex; gap: 15px; margin-bottom: 10px; }
-        .social-row img { width: 24px; height: 24px; filter: invert(1); }
+        /* Responsive */
+        @media (max-width: 1100px) {
+            .container { width: 90%; }
+            .hamburger { display: block; }
+            .nav-links { position: fixed; top: 0; right: -100%; height: 100vh; width: 280px; background: #CAC16A; flex-direction: column; justify-content: center; transition: 0.4s; z-index: 200;}
+            .nav-links.active { right: 0; }
+            .nav-links a { color: #022F40; margin: 15px 0; }
+        }
 
         @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .image-row-gap, .portfolio-banner, .services-container { grid-template-columns: 1fr; }
-            .service-link, .service-link.center-bottom-1, .service-link.center-bottom-2 { grid-column: span 1; }
-            .testimonial-card { min-width: 90%; }
-            .footer-cols { flex-direction: column; text-align: center; align-items: center; }
-            .footer-left, .footer-right { text-align: center; align-items: center; }
+            .image-row-gap, .portfolio-banner, .services-container { grid-template-columns: 1fr; display: flex; flex-direction: column; align-items: center; }
+            .service-item, .service-item.center-bottom-1, .service-item.center-bottom-2 { grid-column: span 1; }
+            .portfolio-item { height: 300px; }
         }
     </style>
 </head>
 <body>
 
-    <header class="themed-bg">
+    <header>
         <div class="container">
             <nav id="navbar">
                 <a href="index.html" class="logo-container"><img src="dr-logo.png" alt="DR Logo"></a>
+                <button class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
                 <ul class="nav-links" id="navLinks">
                     <li><a href="about.html">About</a></li>
                     <li><a href="services.html">Services</a></li>
@@ -184,6 +151,7 @@
             </div>
         </div>
     </header>
+
     <main class="container">
         <section style="padding-top: 30px;">
             <h2 class="section-title">DESIGN WITH PURPOSE</h2>
@@ -223,7 +191,7 @@
             <p class="unified-text" style="margin-bottom: 20px;">Hi, I'm Derek Rebuck, a visual designer in the DMV, with over a decade of experience in graphic and web design. Since 2012, I've helped businesses of all sizes improve their branding, connect with audiences, and grow through strategic design. I've worked with a wide range of clients including federal agencies and contracts, colleges and universities, nonprofits and political campaigns, real estate firms, restaurants, schools, churches, retail businesses, startups, small business and more.</p>
             <p class="unified-text" style="margin-bottom: 20px;">Clients come to me for a range of creative solutions, including, logos & brand identity, style guides, websites, social media graphics, marketing materials, product design templates, digital photography, infographics, content writing and more. My design style leans toward minimalism with bold, colorful touches, but I can adapt to any aesthetic based on your brand and audience. Flexibility and clarity are always key.</p>
             <p class="unified-text" style="font-weight: 500;">If you're looking for a designer who brings strategy, creativity, and professionalism to every product, while working closely with you every step of the way, you're in the right place.</p>
-            <div style="text-align: center;"><a href="#contact" class="btn-connect">Let’s connect and bring your ideas to life</a></div>
+            <div style="text-align: center;"><a href="contact.html" class="btn-connect">Let’s connect and bring your ideas to life</a></div>
         </section>
     </main>
 
@@ -254,136 +222,45 @@
     <section class="container" style="padding-top: 40px;">
         <h2 class="section-title">SERVICES</h2>
         <div class="services-container">
-            <a href="services.html" class="service-link">
+            <div class="service-item">
                 <div class="icon-box">
                     <img src="website-creation.png" class="icon-standard" alt="Website Creation">
                     <img src="website-creation-hover.png" class="icon-hover" alt="Website Creation Hover">
                 </div>
                 <p>Website Creation</p>
-            </a>
-            <a href="services.html" class="service-link">
+            </div>
+            <div class="service-item">
                 <div class="icon-box">
                     <img src="logos-and-branding.png" class="icon-standard" alt="Logos & Branding">
                     <img src="logos-and-branding-hover.png" class="icon-hover" alt="Logos & Branding Hover">
                 </div>
                 <p>Logos & Branding</p>
-            </a>
-            <a href="services.html" class="service-link">
+            </div>
+            <div class="service-item">
                 <div class="icon-box">
                     <img src="infographics.png" class="icon-standard" alt="Infographics">
                     <img src="infographics-hover.png" class="icon-hover" alt="Infographics Hover">
                 </div>
                 <p>Infographics</p>
-            </a>
-            <a href="services.html" class="service-link center-bottom-1">
+            </div>
+            <div class="service-item center-bottom-1">
                 <div class="icon-box">
                     <img src="marketing-materials.png" class="icon-standard" alt="Marketing Materials">
                     <img src="marketing-materials-hover.png" class="icon-hover" alt="Marketing Materials Hover">
                 </div>
                 <p>Marketing Materials</p>
-            </a>
-            <a href="services.html" class="service-link center-bottom-2">
+            </div>
+            <div class="service-item center-bottom-2">
                 <div class="icon-box">
                     <img src="social-media-content.png" class="icon-standard" alt="Social Media Content">
                     <img src="social-media-content-hover.png" class="icon-hover" alt="Social Media Content Hover">
                 </div>
                 <p>Social Media Content</p>
-            </a>
-        </div>
-    </section>
-    <section class="themed-bg testimonials">
-        <div class="container">
-            <h2 style="color: #CAC16A; font-size: 2.2rem; font-weight: 900; margin-bottom: 40px; letter-spacing: 2px;">TESTIMONIALS</h2>
-            <div class="carousel-wrapper">
-                <button class="arrow" onclick="scrollCarousel(-1)" aria-label="Previous Testimonial">&#8249;</button>
-                <div class="carousel" id="testimonialCarousel">
-                    <div class="testimonial-card">
-                        <p>"Great work. This is even better than I imagined. You have a great eye. The design is colorful and fun but still professional."</p>
-                        <h4>Laura S.</h4>
-                    </div>
-                    <div class="testimonial-card">
-                        <p>"You really understood the project specifications and the result looks great. I appreciate your ability to make quick edits on the spot."</p>
-                        <h4>N. Johnson</h4>
-                    </div>
-                    <div class="testimonial-card">
-                        <p>"Wow! This is exactly what I wanted. A sharp, modern, and professional look. Thanks for your help on this."</p>
-                        <h4>Kevin T.</h4>
-                    </div>
-                    <div class="testimonial-card">
-                        <p>"Thank you for your help with my sign and business card. They look wonderful and I've received so many compliments on them."</p>
-                        <h4>Patricia M.</h4>
-                    </div>
-                    <div class="testimonial-card">
-                        <p>"You came up with so many great concepts and ideas that it really made it hard to narrow it down. I really liked them all."</p>
-                        <h4>Katie M.</h4>
-                    </div>
-                    <div class="testimonial-card">
-                        <p>"Your design was impressive. We got an overwhelmingly positive reaction from our customers. Thank you so much!"</p>
-                        <h4>Aditi P.</h4>
-                    </div>
-                </div>
-                <button class="arrow" onclick="scrollCarousel(1)" aria-label="Next Testimonial">&#8250;</button>
             </div>
         </div>
     </section>
-
-    <section id="contact" class="container" style="padding: 80px 0;">
-        <h2 class="section-title">CONTACT</h2>
-        <form class="contact-form" id="rebuckForm" action="mailto:derekrebuck@gmail.com" method="post" enctype="text/plain">
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="Name" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="Email" required>
-            </div>
-            <div class="form-group">
-                <label for="message">Add a message</label>
-                <textarea id="message" name="Message" rows="5" required></textarea>
-            </div>
-            <button type="submit" class="submit-btn">SUBMIT</button>
-        </form>
-    </section>
-
-    <div class="footer-line"></div>
-    <footer>
-        <img src="footer-banner.png" alt="Derek Rebuck Design Banner" class="footer-banner-img">
-        <div class="container">
-            <div class="footer-cols" style="width: 100%;">
-                <div class="footer-left">
-                    <img src="dr-logo.png" alt="DR Logo" style="width: 200px; margin-bottom: 10px;">
-                    <p>Visual Design & Digital Marketing<br>
-                    Proudly serving Maryland, DC, Virginia, and beyond</p>
-                </div>
-                <div class="footer-right">
-                    <div class="social-row">
-                        <a href="https://linkedin.com" target="_blank"><img src="linkedin-icon.png" alt="LinkedIn"></a>
-                        <a href="https://instagram.com" target="_blank"><img src="instagram-icon.png" alt="Instagram"></a>
-                        <a href="https://redbubble.com" target="_blank"><img src="redbubble-icon.png" alt="Redbubble"></a>
-                        <a href="tel:+1234567890"><img src="phone-icon.png" alt="Phone"></a>
-                        <a href="mailto:derekrebuck@gmail.com"><img src="email-icon.png" alt="Email"></a>
-                    </div>
-                    <p>© 2026 by Derek Rebuck Digital Services</p>
-                </div>
-            </div>
-        </div>
-    </footer>
 
     <script>
-        /* Testimonial Carousel Scroll Logic */
-        function scrollCarousel(direction) {
-            const carousel = document.getElementById('testimonialCarousel');
-            const cardWidth = carousel.querySelector('.testimonial-card').offsetWidth + 20; 
-            carousel.scrollBy({ left: direction * cardWidth, behavior: 'smooth' });
-        }
-
-        /* Form Submit Popup */
-        document.getElementById('rebuckForm').onsubmit = function() {
-            alert("Thank you for reaching out. Derek will reach out shortly to respond to your inquiry.");
-        };
-
-        /* Mobile Menu Toggle */
         function toggleMenu() {
             document.getElementById('navLinks').classList.toggle('active');
         }
