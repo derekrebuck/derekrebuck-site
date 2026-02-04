@@ -38,7 +38,7 @@
         .hamburger { display: none; cursor: pointer; background: none; border: none; z-index: 200; }
         .hamburger span { display: block; width: 30px; height: 3px; background-color: #95a6b2; margin: 6px 0; }
 
-        .hero-content { padding: 100px 0 120px; }
+        .hero-content { padding: 80px 0 100px; } /* Reduced vertical padding */
         .hero-content h1 { font-size: clamp(3rem, 8vw, 5rem); font-weight: 900; line-height: 1.2; margin-bottom: 30px; }
         .text-local { color: #95a6b2; }
         .text-global { color: #CAC16A; }
@@ -46,32 +46,40 @@
         .hero-tagline p { color: #ffffff; font-size: 1.1rem; font-weight: 400; }
 
         /* Typography Styling */
-        .section-title { color: #1b4332; font-size: 2.2rem; margin-bottom: 25px; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; }
-        .intro-p { font-size: 1.2rem; margin-bottom: 40px; width: 100%; text-align: center; }
+        .section-title { color: #1b4332; font-size: 2.2rem; margin-bottom: 15px; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; }
+        .unified-text { font-size: 1.15rem; line-height: 1.8; } /* Shared font size for requested areas */
 
         /* Content Sections */
-        section { padding: 80px 0; width: 100%; }
+        section { padding: 40px 0; width: 100%; } /* Reduced padding from 80px */
 
-        .image-row-gap { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 30px; margin: 40px 0; width: 100%; }
+        .image-row-gap { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 30px; margin: 30px 0; width: 100%; }
         .image-row-gap img { width: 100%; aspect-ratio: 1160 / 772; object-fit: cover; border-radius: 4px; }
 
         .btn-connect {
             display: inline-block; background-color: #022F40; color: white;
             padding: 20px 45px; text-decoration: none; font-weight: 700;
-            border-radius: 4px; margin: 40px 0; transition: 0.3s;
+            border-radius: 4px; margin-top: 30px; transition: 0.3s;
         }
         .btn-connect:hover { color: #CAC16A; }
 
-        /* Portfolio Banner */
-        .portfolio-banner { display: grid; grid-template-columns: 1fr 1fr 1fr; width: 100vw; margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%); }
-        .portfolio-item { position: relative; height: 450px; overflow: hidden; }
+        /* Portfolio Banner - Height reduced to 350px */
+        .portfolio-banner { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr 1fr; 
+            width: 100vw; 
+            margin-left: calc(-50vw + 50%); 
+            margin-right: calc(-50vw + 50%); 
+            margin-top: 20px; /* Reduced space above images */
+        }
+        .portfolio-item { position: relative; height: 350px; overflow: hidden; }
         .portfolio-item img { width: 100%; height: 100%; object-fit: cover; }
         .portfolio-overlay {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(27, 67, 50, 0.85); color: white;
+            background: rgba(27, 67, 50, 0.9); color: white;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
-            opacity: 0; transition: 0.5s; padding: 30px;
+            opacity: 0; transition: 0.4s; padding: 30px;
         }
+        .portfolio-overlay p { font-size: 0.9rem; margin-top: 10px; line-height: 1.4; max-width: 250px; }
         .portfolio-item:hover .portfolio-overlay { opacity: 1; }
 
         /* Services Icon Logic */
@@ -79,18 +87,19 @@
             display: grid;
             grid-template-columns: repeat(6, 1fr);
             gap: 40px;
-            margin-top: 50px;
+            margin-top: 40px;
             width: 100%;
         }
         .service-item { grid-column: span 2; display: flex; flex-direction: column; align-items: center; cursor: pointer; }
         .service-item.center-bottom-1 { grid-column: 2 / span 2; }
         .service-item.center-bottom-2 { grid-column: 4 / span 2; }
         
+        /* Icon Size increased to 150px */
         .icon-box { 
             position: relative;
-            width: 120px; 
-            height: 120px; 
-            margin-bottom: 20px;
+            width: 150px; 
+            height: 150px; 
+            margin-bottom: 15px;
         }
         .icon-box img {
             position: absolute;
@@ -118,8 +127,7 @@
         @media (max-width: 768px) {
             .image-row-gap, .portfolio-banner, .services-container { grid-template-columns: 1fr; display: flex; flex-direction: column; align-items: center; }
             .service-item, .service-item.center-bottom-1, .service-item.center-bottom-2 { grid-column: span 1; }
-            .section-title { font-size: 1.8rem; }
-            .portfolio-item { height: 350px; }
+            .portfolio-item { height: 300px; }
         }
 
         .header-home { height: 800px; }
@@ -149,15 +157,15 @@
     </header>
 
     <main class="container">
-        <section>
+        <section style="padding-top: 30px;">
             <h2 class="section-title">DESIGN WITH PURPOSE</h2>
-            <p class="intro-p">Great design is like crafting a fine wine. It takes the right ingredients, skilled hands, the proper tools, time for testing and refinement, and, most importantly, the public’s approval.</p>
+            <p class="unified-text" style="margin-bottom: 25px;">Great design is like crafting a fine wine. It takes the right ingredients, skilled hands, the proper tools, time for testing and refinement, and, most importantly, the public’s approval.</p>
             
-            <p style="font-weight: bold; color: #1b4332; margin-bottom: 40px;">Before I begin designing, I ask key questions to ensure clarity and intent:</p>
+            <p class="unified-text" style="font-weight: bold; color: #1b4332; margin-bottom: 25px;">Before I begin designing, I ask key questions to ensure clarity and intent:</p>
             
             <div style="display: flex; justify-content: center; gap: 60px; flex-wrap: wrap; text-align: left; width: 100%;">
                 <div style="flex: 1; min-width: 250px; max-width: 400px;">
-                    <h3 style="color:#1b4332; margin-bottom: 15px; border-bottom: 2px solid #CAC16A; padding-bottom: 5px;">Audience & Connection:</h3>
+                    <h3 style="color:#1b4332; margin-bottom: 10px; border-bottom: 2px solid #CAC16A; padding-bottom: 5px;">Audience & Connection:</h3>
                     <ul style="list-style: square; padding-left: 20px;">
                         <li>Who is the audience?</li>
                         <li>How do they think?</li>
@@ -166,7 +174,7 @@
                     </ul>
                 </div>
                 <div style="flex: 1; min-width: 250px; max-width: 400px;">
-                    <h3 style="color:#1b4332; margin-bottom: 15px; border-bottom: 2px solid #CAC16A; padding-bottom: 5px;">Purpose & Effectiveness:</h3>
+                    <h3 style="color:#1b4332; margin-bottom: 10px; border-bottom: 2px solid #CAC16A; padding-bottom: 5px;">Purpose & Effectiveness:</h3>
                     <ul style="list-style: square; padding-left: 20px;">
                         <li>What is the goal of this design?</li>
                         <li>Does it support and enhance the message?</li>
@@ -179,14 +187,14 @@
             <div class="image-row-gap">
                 <img src="ktv-sketch.png" alt="KTV Sketch">
                 <img src="leaf-graphic.png" alt="Leaf Graphic">
-                <img src="logo-sketch.png" alt="Logo Sketch">
+                <img src="dr-logo-sketch.png" alt="DR Logo Sketch">
             </div>
         </section>
 
-        <section style="text-align: left; width: 100%; border-top: 1px solid #eee;">
-            <p style="margin-bottom: 25px;">Hi, I'm Derek Rebuck, a visual designer in the DMV, with over a decade of experience in graphic and web design. Since 2012, I've helped businesses of all sizes improve their branding, connect with audiences, and grow through strategic design. I've worked with a wide range of clients including federal agencies and contracts, colleges and universities, nonprofits and political campaigns, real estate firms, restaurants, schools, churches, retail businesses, startups, small business and more.</p>
-            <p style="margin-bottom: 25px;">Clients come to me for a range of creative solutions, including, logos & brand identity, style guides, websites, social media graphics, marketing materials, product design templates, digital photography, infographics, content writing and more. My design style leans toward minimalism with bold, colorful touches, but I can adapt to any aesthetic based on your brand and audience. Flexibility and clarity are always key.</p>
-            <p>If you're looking for a designer who brings strategy, creativity, and professionalism to every product, while working closely with you every step of the way, you're in the right place.</p>
+        <section style="text-align: left; width: 100%; border-top: 1px solid #eee; padding-top: 30px;">
+            <p class="unified-text" style="margin-bottom: 20px;">Hi, I'm Derek Rebuck, a visual designer in the DMV, with over a decade of experience in graphic and web design. Since 2012, I've helped businesses of all sizes improve their branding, connect with audiences, and grow through strategic design. I've worked with a wide range of clients including federal agencies and contracts, colleges and universities, nonprofits and political campaigns, real estate firms, restaurants, schools, churches, retail businesses, startups, small business and more.</p>
+            <p class="unified-text" style="margin-bottom: 20px;">Clients come to me for a range of creative solutions, including, logos & brand identity, style guides, websites, social media graphics, marketing materials, product design templates, digital photography, infographics, content writing and more. My design style leans toward minimalism with bold, colorful touches, but I can adapt to any aesthetic based on your brand and audience. Flexibility and clarity are always key.</p>
+            <p class="unified-text" style="font-weight: 500;">If you're looking for a designer who brings strategy, creativity, and professionalism to every product, while working closely with you every step of the way, you're in the right place.</p>
             <div style="text-align: center;"><a href="contact.html" class="btn-connect">Let’s connect and bring your ideas to life</a></div>
         </section>
     </main>
@@ -194,19 +202,28 @@
     <div class="portfolio-banner">
         <div class="portfolio-item">
             <img src="touzled-tressez.png" alt="Touzled Tressez">
-            <div class="portfolio-overlay"><h3>Touzled Tressez</h3></div>
+            <div class="portfolio-overlay">
+                <h3>Touzled Tressez</h3>
+                <p>Elegance meets artistry. Branding and identity design for premium hair styling services.</p>
+            </div>
         </div>
         <div class="portfolio-item">
             <img src="bakerb-solutions.png" alt="BakerB Solutions">
-            <div class="portfolio-overlay"><h3>BakerB Solutions</h3></div>
+            <div class="portfolio-overlay">
+                <h3>BakerB Solutions</h3>
+                <p>Corporate clarity. Custom web solutions and marketing collateral for business development.</p>
+            </div>
         </div>
         <div class="portfolio-item">
             <img src="ktv-properties.png" alt="KTV Properties">
-            <div class="portfolio-overlay"><h3>KTV Properties</h3></div>
+            <div class="portfolio-overlay">
+                <h3>KTV Properties</h3>
+                <p>Real estate redefined. Strategic visual content and product templates for modern firms.</p>
+            </div>
         </div>
     </div>
 
-    <section class="container">
+    <section class="container" style="padding-top: 40px;">
         <h2 class="section-title">SERVICES</h2>
         <div class="services-container">
             <div class="service-item">
@@ -216,7 +233,6 @@
                 </div>
                 <p>Website Creation</p>
             </div>
-
             <div class="service-item">
                 <div class="icon-box">
                     <img src="logos-and-branding.png" class="icon-standard" alt="Logos & Branding">
@@ -224,7 +240,6 @@
                 </div>
                 <p>Logos & Branding</p>
             </div>
-
             <div class="service-item">
                 <div class="icon-box">
                     <img src="infographics.png" class="icon-standard" alt="Infographics">
@@ -232,7 +247,6 @@
                 </div>
                 <p>Infographics</p>
             </div>
-
             <div class="service-item center-bottom-1">
                 <div class="icon-box">
                     <img src="marketing-materials.png" class="icon-standard" alt="Marketing Materials">
@@ -240,7 +254,6 @@
                 </div>
                 <p>Marketing Materials</p>
             </div>
-
             <div class="service-item center-bottom-2">
                 <div class="icon-box">
                     <img src="social-media-content.png" class="icon-standard" alt="Social Media Content">
