@@ -6,172 +6,287 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <title>Local Designs | Global Impact | Derek Rebuck</title>
     <style>
-        /* Base Reset & Typography */
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
-        body { background-color: #ffffff; line-height: 1.8; color: #333; text-align: center; overflow-x: hidden; }
+   To ensure everything works perfectly, I have consolidated all your previous requests into this single CSS block. It includes the fixed navigation spacing, the rounded "Let's Connect" button, the testimonial carousel logic, the white-icon support (no filters), the bottom-aligned desktop footer, and the 50% zoomed banner image.
 
-        .container { 
-            width: 80%; 
-            max-width: 1000px; 
-            margin: 0 auto; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-        }
-
-        /* Shared Background Style for Header & Testimonials */
-        .themed-bg {
-            background: linear-gradient(rgba(27, 67, 50, 0.3), rgba(27, 67, 50, 0.4)), url('Green Background.png'); 
-            background-size: cover; 
-            background-position: center; 
-            background-attachment: fixed;
-            color: white; 
-            width: 100%; 
-        }
-
-        /* Header & Nav */
-        header { padding-bottom: 60px; }
-        nav { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: flex-end; 
-            padding: 40px 0; 
-            width: 100%; 
-            z-index: 100; 
-        }
-        .logo-container img { width: 280px; height: auto; display: block; }
-        
-        .nav-links { list-style: none; display: flex; gap: 40px; padding-bottom: 5px; }
-        .nav-links a { 
-            color: #95a6b2; 
-            text-decoration: none; 
-            font-weight: 500; 
-            text-transform: uppercase; 
-            font-size: 1rem; 
-            letter-spacing: 1.5px; 
-            position: relative; 
-            padding-bottom: 12px; 
-        }
-        .nav-links a::after { 
-            content: ''; 
-            position: absolute; 
-            width: 0; 
-            height: 2px; 
-            bottom: 0; 
-            left: 0; 
-            background-color: #CAC16A; 
-            transition: width 0.3s; 
-        }
-        .nav-links a:hover::after { width: 100%; }
-
-        /* Hero Content */
-        .hero-content { padding: 60px 0 80px; } 
-        .hero-content h1 { font-size: clamp(3rem, 8vw, 5rem); font-weight: 900; line-height: 1.1; margin-bottom: 15px; }
-        .text-local { color: #95a6b2; }
-        .text-global { color: #CAC16A; }
-        .hero-tagline { 
-            border-top: 4px solid #CAC16A; 
-            border-bottom: 4px solid #CAC16A; 
-            padding: 8px 15px; 
-            display: inline-block; 
-        }
-        .hero-tagline p { color: #ffffff; font-size: 1.1rem; font-weight: 400; }
-
-        /* Content Section Styling */
-        section { padding: 40px 0; width: 100%; }
-        .section-title { color: #1b4332; font-size: 2.2rem; margin-bottom: 15px; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; }
-        .unified-text { font-size: 1.15rem; line-height: 1.8; } 
-
-        /* Let's Connect Button - Rounded Rectangle */
-        .btn-connect {
-            display: inline-block; 
-            color: #022F40; 
-            padding: 12px 35px;
-            text-decoration: none; 
-            font-weight: 700;
-            margin-top: 30px; 
-            border: 2px solid #022F40;
-            border-radius: 50px;
-            position: relative;
-            transition: 0.3s;
-        }
-        .btn-connect::after { 
-            content: ''; 
-            position: absolute; 
-            width: 0; 
-            height: 3px; 
-            bottom: 6px; 
-            left: 25%; 
-            background-color: #CAC16A; 
-            transition: width 0.3s; 
-        }
-        .btn-connect:hover { background-color: #022F40; color: #CAC16A; }
-        .btn-connect:hover::after { width: 50%; }
-
-        /* [Additional styles for part 2: images, services, carousel, form, footer] */
-        .image-row-gap { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 30px; margin: 30px 0; width: 100%; }
-        .image-row-gap img { width: 100%; aspect-ratio: 1160 / 772; object-fit: cover; border-radius: 4px; }
-        
-        .portfolio-banner { display: grid; grid-template-columns: 1fr 1fr 1fr; width: 100vw; margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%); }
-        .portfolio-item { position: relative; height: 350px; overflow: hidden; }
-        .portfolio-item img { width: 100%; height: 100%; object-fit: cover; }
-        .portfolio-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(27, 67, 50, 0.9); color: white; display: flex; flex-direction: column; justify-content: center; align-items: center; opacity: 0; transition: 0.4s; padding: 30px; }
-        .portfolio-item:hover .portfolio-overlay { opacity: 1; }
-
-        .services-container { display: grid; grid-template-columns: repeat(6, 1fr); gap: 40px; margin-top: 40px; width: 100%; }
-        .service-link { grid-column: span 2; text-decoration: none; display: flex; flex-direction: column; align-items: center; }
-        .service-link.center-bottom-1 { grid-column: 2 / span 2; }
-        .service-link.center-bottom-2 { grid-column: 4 / span 2; }
-        .icon-box { position: relative; width: 120px; height: 120px; margin-bottom: 15px; }
-        .icon-box img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; transition: opacity 0.3s; }
-        .icon-hover { opacity: 0; }
-        .service-link:hover .icon-standard { opacity: 0; }
-        .service-link:hover .icon-hover { opacity: 1; }
-        .service-link p { font-weight: 700; color: #1b4332; font-size: 1rem; position: relative; padding-bottom: 5px; }
-        .service-link p::after { content: ''; position: absolute; width: 0; height: 2px; bottom: 0; left: 0; background-color: #CAC16A; transition: width 0.3s; }
-        .service-link:hover p::after { width: 100%; }
-
-        .testimonials { padding: 80px 0; }
-        .carousel-wrapper { position: relative; width: 100%; display: flex; align-items: center; justify-content: center; }
-        .carousel { display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; -ms-overflow-style: none; padding: 20px 0; width: 90%; }
-        .carousel::-webkit-scrollbar { display: none; }
-        .testimonial-card { min-width: calc(33.333% - 14px); scroll-snap-align: center; background: linear-gradient(rgba(149, 166, 178, 0.85), rgba(149, 166, 178, 0.85)), url('https://via.placeholder.com/400x300'); background-size: cover; padding: 40px 20px; border-radius: 10px; color: #1b4332; }
-        .arrow { background: none; border: none; color: #CAC16A; font-size: 3rem; cursor: pointer; transition: 0.3s; z-index: 10; }
-        .arrow:hover { color: white; }
-
-        .contact-form { width: 100%; max-width: 600px; text-align: left; margin: 30px auto; }
-        .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; font-weight: 700; color: #1b4332; margin-bottom: 5px; }
-        .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem; }
-        .submit-btn { background-color: #1b4332; color: white; border: none; padding: 15px 40px; font-weight: 700; border-radius: 4px; cursor: pointer; width: 100%; transition: 0.3s; }
-        .submit-btn:hover { background-color: #022F40; color: #CAC16A; }
-
-        .footer-line { width: 100%; height: 2px; background-color: #1b4332; }
-        footer { width: 100%; color: white; padding-bottom: 40px; background: linear-gradient(rgba(27, 67, 50, 0.3), rgba(27, 67, 50, 0.3)), url('Green Background.png'); background-size: cover; }
-        .footer-banner-img { width: 100%; height: auto; display: block; }
-        .footer-cols { display: flex; justify-content: space-between; align-items: flex-start; margin-top: 40px; }
-        .footer-left { text-align: left; flex: 1; }
-        .footer-right { text-align: right; flex: 1; display: flex; flex-direction: column; align-items: flex-end; }
-.social-row { 
-    display: flex; 
-    gap: 15px; 
-    margin-bottom: 10px; 
+CSS
+/* Base Reset & Typography */
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
 }
+
+body { 
+    background-color: #ffffff; 
+    line-height: 1.8; 
+    color: #333; 
+    text-align: center; 
+    overflow-x: hidden; 
+}
+
+.container { 
+    width: 80%; 
+    max-width: 1000px; 
+    margin: 0 auto; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+}
+
+/* Shared Background Style (Header & Testimonials) */
+.themed-bg {
+    background: linear-gradient(rgba(27, 67, 50, 0.3), rgba(27, 67, 50, 0.4)), url('Green Background.png'); 
+    background-size: cover; 
+    background-position: center; 
+    background-attachment: fixed;
+    color: white; 
+    width: 100%; 
+}
+
+/* Header & Navigation */
+header { padding-bottom: 60px; }
+
+nav { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: flex-end; 
+    padding: 40px 0; 
+    width: 100%; 
+    z-index: 100; 
+}
+
+.logo-container img { width: 280px; height: auto; display: block; }
+
+.nav-links { list-style: none; display: flex; gap: 40px; padding-bottom: 5px; }
+
+.nav-links a { 
+    color: #95a6b2; 
+    text-decoration: none; 
+    font-weight: 500; 
+    text-transform: uppercase; 
+    font-size: 1rem; 
+    letter-spacing: 1.5px; 
+    position: relative; 
+    padding-bottom: 15px; /* Added vertical space per your request */
+}
+
+.nav-links a::after { 
+    content: ''; 
+    position: absolute; 
+    width: 0; 
+    height: 2px; 
+    bottom: 0; 
+    left: 0; 
+    background-color: #CAC16A; 
+    transition: width 0.3s; 
+}
+
+.nav-links a:hover::after { width: 100%; }
+
+/* Hero Content */
+.hero-content { padding: 60px 0 80px; } 
+.hero-content h1 { font-size: clamp(3rem, 8vw, 5rem); font-weight: 900; line-height: 1.1; margin-bottom: 15px; }
+.text-local { color: #95a6b2; }
+.text-global { color: #CAC16A; }
+.hero-tagline { 
+    border-top: 4px solid #CAC16A; 
+    border-bottom: 4px solid #CAC16A; 
+    padding: 8px 15px; 
+    display: inline-block; 
+}
+.hero-tagline p { color: #ffffff; font-size: 1.1rem; font-weight: 400; }
+
+/* General Section Styling */
+section { padding: 40px 0; width: 100%; }
+.section-title { color: #1b4332; font-size: 2.2rem; margin-bottom: 15px; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; }
+.unified-text { font-size: 1.15rem; line-height: 1.8; } 
+
+/* Content Images Grid */
+.image-row-gap { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 30px; margin: 30px 0; width: 100%; }
+.image-row-gap img { width: 100%; aspect-ratio: 1160 / 772; object-fit: cover; border-radius: 4px; }
+
+/* Let's Connect Button - Rounded Rectangle */
+.btn-connect {
+    display: inline-block; 
+    color: #022F40; 
+    padding: 12px 35px;
+    text-decoration: none; 
+    font-weight: 700;
+    margin-top: 30px; 
+    border: 2px solid #022F40;
+    border-radius: 50px;
+    position: relative;
+    transition: 0.3s;
+}
+/* Underline effect inside the button */
+.btn-connect::after { 
+    content: ''; 
+    position: absolute; 
+    width: 0; 
+    height: 3px; 
+    bottom: 6px; 
+    left: 25%; 
+    background-color: #CAC16A; 
+    transition: width 0.3s; 
+}
+.btn-connect:hover { background-color: #022F40; color: #CAC16A; }
+.btn-connect:hover::after { width: 50%; }
+
+/* Portfolio Banner */
+.portfolio-banner { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr 1fr; 
+    width: 100vw; 
+    margin-left: calc(-50vw + 50%); 
+    margin-right: calc(-50vw + 50%); 
+}
+.portfolio-item { position: relative; height: 350px; overflow: hidden; }
+.portfolio-item img { width: 100%; height: 100%; object-fit: cover; }
+.portfolio-overlay { 
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+    background: rgba(27, 67, 50, 0.9); color: white; 
+    display: flex; flex-direction: column; justify-content: center; align-items: center; 
+    opacity: 0; transition: 0.4s; padding: 30px; 
+}
+.portfolio-item:hover .portfolio-overlay { opacity: 1; }
+
+/* Services Section */
+.services-container { display: grid; grid-template-columns: repeat(6, 1fr); gap: 40px; margin-top: 40px; width: 100%; }
+.service-link { grid-column: span 2; text-decoration: none; display: flex; flex-direction: column; align-items: center; }
+.service-link.center-bottom-1 { grid-column: 2 / span 2; }
+.service-link.center-bottom-2 { grid-column: 4 / span 2; }
+
+.icon-box { position: relative; width: 120px; height: 120px; margin-bottom: 15px; }
+.icon-box img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; transition: opacity 0.3s; }
+.icon-hover { opacity: 0; }
+.service-link:hover .icon-standard { opacity: 0; }
+.service-link:hover .icon-hover { opacity: 1; }
+
+.service-link p { 
+    font-weight: 700; color: #1b4332; font-size: 1rem; position: relative; padding-bottom: 8px; 
+}
+.service-link p::after { 
+    content: ''; position: absolute; width: 0; height: 2px; bottom: 0; left: 0; 
+    background-color: #CAC16A; transition: width 0.3s; 
+}
+.service-link:hover p::after { width: 100%; }
+
+/* Testimonials Carousel */
+.testimonials { padding: 80px 0; }
+.carousel-wrapper { position: relative; width: 100%; display: flex; align-items: center; justify-content: center; }
+.carousel { 
+    display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; 
+    scrollbar-width: none; -ms-overflow-style: none; padding: 20px 0; width: 90%; 
+}
+.carousel::-webkit-scrollbar { display: none; }
+.testimonial-card { 
+    min-width: calc(33.333% - 14px); 
+    scroll-snap-align: center; 
+    background: linear-gradient(rgba(149, 166, 178, 0.85), rgba(149, 166, 178, 0.85)), url('https://via.placeholder.com/400x300'); 
+    background-size: cover; padding: 40px 20px; border-radius: 10px; color: #1b4332; 
+}
+.arrow { background: none; border: none; color: #CAC16A; font-size: 3rem; cursor: pointer; transition: 0.3s; z-index: 10; }
+.arrow:hover { color: white; }
+
+/* Contact Form */
+.contact-form { width: 100%; max-width: 600px; text-align: left; margin: 30px auto; }
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; font-weight: 700; color: #1b4332; margin-bottom: 5px; }
+.form-group input, .form-group textarea { 
+    width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem; 
+}
+.submit-btn { 
+    background-color: #1b4332; color: white; border: none; padding: 15px 40px; 
+    font-weight: 700; border-radius: 4px; cursor: pointer; width: 100%; transition: 0.3s; 
+}
+.submit-btn:hover { background-color: #022F40; color: #CAC16A; }
+
+/* Footer Styling */
+footer { 
+    width: 100%; 
+    color: white; 
+    padding-bottom: 40px; 
+    background: linear-gradient(rgba(27, 67, 50, 0.3), rgba(27, 67, 50, 0.3)), url('Green Background.png'); 
+    background-size: cover; 
+    overflow: hidden; 
+}
+
+/* Footer Banner Zoom (50% scale) */
+.footer-banner-container {
+    width: 100%;
+    height: 350px; /* Adjust height as needed */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-banner-img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover;
+    transform: scale(1.5); /* 50% Zoomed in */
+    transform-origin: center;
+}
+
+/* Desktop Bottom-Aligned Columns */
+.footer-cols { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: flex-end; /* Bottom Aligned on Desktop */
+    margin-top: 40px; 
+    width: 100%;
+}
+
+.footer-left { text-align: left; flex: 1; }
+.footer-right { 
+    text-align: right; 
+    flex: 1; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: flex-end; 
+}
+
+.social-row { display: flex; gap: 15px; margin-bottom: 10px; }
 .social-row img { 
     width: 24px; 
     height: 24px; 
-    display: block;
-    /* Removed filter: invert(1) so white icons stay white */
+    /* No filter: invert(1) to keep white icons white */
 }
 
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .image-row-gap, .portfolio-banner, .services-container { grid-template-columns: 1fr; }
-            .service-link, .service-link.center-bottom-1, .service-link.center-bottom-2 { grid-column: span 1; }
-            .testimonial-card { min-width: 90%; }
-            .footer-cols { flex-direction: column; text-align: center; align-items: center; }
-            .footer-left, .footer-right { text-align: center; align-items: center; }
-        }
+/* Mobile & Tablet Responsive Layouts */
+@media (max-width: 768px) {
+    .nav-links { display: none; }
+    
+    .image-row-gap, 
+    .portfolio-banner, 
+    .services-container { grid-template-columns: 1fr; }
+    
+    .service-link, 
+    .service-link.center-bottom-1, 
+    .service-link.center-bottom-2 { grid-column: span 1; }
+    
+    .testimonial-card { min-width: 90%; }
+    
+    /* Keep Mobile Footer Layout Centered/Stacked as originally requested */
+    .footer-cols { 
+        flex-direction: column; 
+        text-align: center; 
+        align-items: center; 
+        gap: 30px;
+    }
+    
+    .footer-left, 
+    .footer-right { 
+        text-align: center; 
+        align-items: center; 
+    }
+
+    .footer-banner-img {
+        transform: scale(1.2); /* Reduced zoom on mobile for better framing */
+    }
+}
     </style>
 </head>
 <body>
@@ -355,40 +470,30 @@
         </form>
     </section>
 
-    <div class="footer-line"></div>
-    <footer>
-        <img src="footer-banner.png" alt="Derek Rebuck Design Banner" class="footer-banner-img">
-        <div class="container">
-            <div class="footer-cols" style="width: 100%;">
-                <div class="footer-left">
-                    <img src="dr-logo.png" alt="DR Logo" style="width: 200px; margin-bottom: 10px;">
-                    <p>Visual Design & Digital Marketing<br>
-                    Proudly serving Maryland, DC, Virginia, and beyond</p>
-                </div>
-                <div class="footer-right">
-<div class="footer-right">
-    <div class="social-row">
-        <a href="https://www.linkedin.com/in/drebuck/" target="_blank">
-            <img src="linkedin-white.png" alt="LinkedIn">
-        </a>
-        <a href="https://www.instagram.com/derekrebuck/" target="_blank">
-            <img src="instagram-white.png" alt="Instagram">
-        </a>
-        <a href="https://www.redbubble.com/people/drebuck/shop" target="_blank">
-            <img src="redbubble-white.png" alt="Redbubble">
-        </a>
-        <a href="tel:5555555555">
-            <img src="cell-white.png" alt="Phone">
-        </a>
-        <a href="mailto:derekrebuck@gmail.com">
-            <img src="email-white.png" alt="Email">
-        </a>
+  <footer>
+    <div class="footer-banner-container">
+        <img src="footer-banner.png" alt="Footer Banner" class="footer-banner-img">
     </div>
-    <p>© 2026 by Derek Rebuck Digital Services</p>
-</div>
+    <div class="container">
+        <div class="footer-cols">
+            <div class="footer-left">
+                <img src="dr-logo.png" alt="DR Logo" style="width: 200px; margin-bottom: 10px;">
+                <p>Visual Design & Digital Marketing<br>
+                Proudly serving Maryland, DC, Virginia, and beyond</p>
+            </div>
+            <div class="footer-right">
+                <div class="social-row">
+                    <a href="https://www.linkedin.com/in/drebuck/" target="_blank"><img src="linkedin-white.png" alt="LinkedIn"></a>
+                    <a href="https://www.instagram.com/derekrebuck/" target="_blank"><img src="instagram-white.png" alt="Instagram"></a>
+                    <a href="https://www.redbubble.com/people/drebuck/shop" target="_blank"><img src="redbubble-white.png" alt="Redbubble"></a>
+                    <a href="tel:1234567890"><img src="cell-white.png" alt="Phone"></a>
+                    <a href="mailto:derekrebuck@gmail.com"><img src="email-white.png" alt="Email"></a>
+                </div>
+                <p>© 2026 by Derek Rebuck Digital Services</p>
             </div>
         </div>
-    </footer>
+    </div>
+</footer>
 
     <script>
         /* Testimonial Carousel Scroll Logic */
