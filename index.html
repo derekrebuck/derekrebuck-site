@@ -38,19 +38,20 @@
         .hamburger { display: none; cursor: pointer; background: none; border: none; z-index: 200; }
         .hamburger span { display: block; width: 30px; height: 3px; background-color: #95a6b2; margin: 6px 0; }
 
-        .hero-content { padding: 80px 0 100px; } /* Reduced vertical padding */
-        .hero-content h1 { font-size: clamp(3rem, 8vw, 5rem); font-weight: 900; line-height: 1.2; margin-bottom: 30px; }
+        /* Hero Spacing Tightened */
+        .hero-content { padding: 60px 0 80px; } 
+        .hero-content h1 { font-size: clamp(3rem, 8vw, 5rem); font-weight: 900; line-height: 1.1; margin-bottom: 15px; }
         .text-local { color: #95a6b2; }
         .text-global { color: #CAC16A; }
-        .hero-tagline { border-top: 4px solid #CAC16A; border-bottom: 4px solid #CAC16A; padding: 12px 15px; display: inline-block; }
+        .hero-tagline { border-top: 4px solid #CAC16A; border-bottom: 4px solid #CAC16A; padding: 8px 15px; display: inline-block; }
         .hero-tagline p { color: #ffffff; font-size: 1.1rem; font-weight: 400; }
 
         /* Typography Styling */
         .section-title { color: #1b4332; font-size: 2.2rem; margin-bottom: 15px; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; }
-        .unified-text { font-size: 1.15rem; line-height: 1.8; } /* Shared font size for requested areas */
+        .unified-text { font-size: 1.15rem; line-height: 1.8; } 
 
         /* Content Sections */
-        section { padding: 40px 0; width: 100%; } /* Reduced padding from 80px */
+        section { padding: 40px 0; width: 100%; }
 
         .image-row-gap { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 30px; margin: 30px 0; width: 100%; }
         .image-row-gap img { width: 100%; aspect-ratio: 1160 / 772; object-fit: cover; border-radius: 4px; }
@@ -62,14 +63,14 @@
         }
         .btn-connect:hover { color: #CAC16A; }
 
-        /* Portfolio Banner - Height reduced to 350px */
+        /* Portfolio Banner - 350px height */
         .portfolio-banner { 
             display: grid; 
             grid-template-columns: 1fr 1fr 1fr; 
             width: 100vw; 
             margin-left: calc(-50vw + 50%); 
             margin-right: calc(-50vw + 50%); 
-            margin-top: 20px; /* Reduced space above images */
+            margin-top: 20px; 
         }
         .portfolio-item { position: relative; height: 350px; overflow: hidden; }
         .portfolio-item img { width: 100%; height: 100%; object-fit: cover; }
@@ -82,7 +83,7 @@
         .portfolio-overlay p { font-size: 0.9rem; margin-top: 10px; line-height: 1.4; max-width: 250px; }
         .portfolio-item:hover .portfolio-overlay { opacity: 1; }
 
-        /* Services Icon Logic */
+        /* Services Icon Size Restored to 120px */
         .services-container {
             display: grid;
             grid-template-columns: repeat(6, 1fr);
@@ -94,11 +95,10 @@
         .service-item.center-bottom-1 { grid-column: 2 / span 2; }
         .service-item.center-bottom-2 { grid-column: 4 / span 2; }
         
-        /* Icon Size increased to 150px */
         .icon-box { 
             position: relative;
-            width: 150px; 
-            height: 150px; 
+            width: 120px; 
+            height: 120px; 
             margin-bottom: 15px;
         }
         .icon-box img {
@@ -129,27 +129,23 @@
             .service-item, .service-item.center-bottom-1, .service-item.center-bottom-2 { grid-column: span 1; }
             .portfolio-item { height: 300px; }
         }
-
-        .header-home { height: 800px; }
-        .header-internal { height: 300px; }
-        .hidden { display: none; }
     </style>
 </head>
 <body>
 
-    <header id="mainHeader" class="header-home">
-        <div class="container" style="height: 100%;">
+    <header>
+        <div class="container">
             <nav id="navbar">
-                <a href="#" class="logo-container" onclick="updateHeader(true)"><img src="dr-logo.png" alt="DR Logo"></a>
+                <a href="index.html" class="logo-container"><img src="dr-logo.png" alt="DR Logo"></a>
                 <button class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
                 <ul class="nav-links" id="navLinks">
-                    <li><a href="#" onclick="updateHeader(true)">About</a></li>
-                    <li><a href="#" onclick="updateHeader(false)">Services</a></li>
-                    <li><a href="#" onclick="updateHeader(false)">Projects</a></li>
-                    <li><a href="#" onclick="updateHeader(false)">Contact</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
-            <div id="heroText" class="hero-content">
+            <div class="hero-content">
                 <h1><span class="text-local">LOCAL DESIGNS</span><br><span class="text-global">GLOBAL IMPACT</span></h1>
                 <div class="hero-tagline"><p>Creative, engaging content that elevates brands and drives results</p></div>
             </div>
@@ -187,11 +183,11 @@
             <div class="image-row-gap">
                 <img src="ktv-sketch.png" alt="KTV Sketch">
                 <img src="leaf-graphic.png" alt="Leaf Graphic">
-                <img src="dr-logo-sketch.png" alt="DR Logo Sketch">
+                <img src="logo-sketch.png" alt="Logo Sketch">
             </div>
         </section>
 
-        <section style="text-align: left; width: 100%; border-top: 1px solid #eee; padding-top: 30px;">
+        <section style="text-align: left; width: 100%; padding-top: 10px;">
             <p class="unified-text" style="margin-bottom: 20px;">Hi, I'm Derek Rebuck, a visual designer in the DMV, with over a decade of experience in graphic and web design. Since 2012, I've helped businesses of all sizes improve their branding, connect with audiences, and grow through strategic design. I've worked with a wide range of clients including federal agencies and contracts, colleges and universities, nonprofits and political campaigns, real estate firms, restaurants, schools, churches, retail businesses, startups, small business and more.</p>
             <p class="unified-text" style="margin-bottom: 20px;">Clients come to me for a range of creative solutions, including, logos & brand identity, style guides, websites, social media graphics, marketing materials, product design templates, digital photography, infographics, content writing and more. My design style leans toward minimalism with bold, colorful touches, but I can adapt to any aesthetic based on your brand and audience. Flexibility and clarity are always key.</p>
             <p class="unified-text" style="font-weight: 500;">If you're looking for a designer who brings strategy, creativity, and professionalism to every product, while working closely with you every step of the way, you're in the right place.</p>
@@ -267,14 +263,6 @@
     <script>
         function toggleMenu() {
             document.getElementById('navLinks').classList.toggle('active');
-        }
-        function updateHeader(isHome) {
-            const header = document.getElementById('mainHeader');
-            const hero = document.getElementById('heroText');
-            document.getElementById('navLinks').classList.remove('active');
-            if (isHome) { header.classList.add('header-home'); header.classList.remove('header-internal'); hero.classList.remove('hidden'); }
-            else { header.classList.add('header-internal'); header.classList.remove('header-home'); hero.classList.add('hidden'); }
-            window.scrollTo({top: 0, behavior: 'smooth'});
         }
     </script>
 </body>
