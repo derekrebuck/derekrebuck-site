@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Contact Derek Rebuck about design, web, collaboration or select freelance work.">
+  <title>Contact | Derek Rebuck</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script>try{const t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<header class="site-header">
+  <div class="shell">
+    <nav class="nav" aria-label="Primary">
+      <a class="brand" href="index.html" aria-label="Derek Rebuck home"><img src="dr-logo.png" alt=""></a>
+      <ul class="nav-links" id="primary-links">
+        <li><a href="work.html">Work</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html" aria-current="page">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="theme-toggle" data-theme-toggle type="button" aria-label="Use dark theme"><span aria-hidden="true">◐</span></button>
+        <button class="menu-btn" data-menu type="button" aria-expanded="false" aria-controls="primary-links">Menu</button>
+      </div>
+    </nav>
+  </div>
+</header>
+<main id="main">
+  <section class="page-hero contact-hero">
+    <div class="shell narrow-hero">
+      <p class="eyebrow">Contact</p>
+      <h1>Let’s talk.</h1>
+      <p>I’m not actively chasing freelance work, but I’m always open to a good conversation, an interesting project or a reason to connect.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="shell contact-page-layout">
+      <div class="contact-intro">
+        <p class="section-label">Get in touch</p>
+        <h2>Email works best.</h2>
+        <p>You can also find me on LinkedIn. If you use the form, your message will be sent to the same inbox.</p>
+        <p><strong>Email</strong><br><a href="mailto:derekrebuck@gmail.com">derekrebuck@gmail.com</a></p>
+        <p><strong>LinkedIn</strong><br><a href="https://www.linkedin.com/in/derekrebuck/" rel="me">linkedin.com/in/derekrebuck</a></p>
+      </div>
+      <form class="form" action="mailto:derekrebuck@gmail.com" method="post" enctype="text/plain">
+        <div><label for="name">Name</label><input id="name" name="Name" autocomplete="name" required></div>
+        <div><label for="email">Email</label><input id="email" name="Email" type="email" autocomplete="email" required></div>
+        <div><label for="message">Message</label><textarea id="message" name="Message" required></textarea></div>
+        <button class="button primary" type="submit">Send message</button>
+        <p class="form-note">This prototype currently opens your email app. Before launch, the form can be connected to a static form service so it sends directly from the site.</p>
+      </form>
+    </div>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="shell footer-inner">
+    <img src="dr-logo.png" alt="Derek Rebuck, Visual Designer">
+    <div class="footer-small">Contact<br>© 2026 Derek Rebuck</div>
+  </div>
+</footer>
+<script src="js/site.js"></script>
+</body>
+</html>
