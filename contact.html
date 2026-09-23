@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Contact Derek Rebuck about design, web, collaboration or select freelance work.">
+  <title>Contact | Derek Rebuck</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script>try{const t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<header class="site-header" data-site-header>
+  <div class="shell">
+    <nav class="nav" aria-label="Primary">
+      <a class="brand" href="index.html" aria-label="Derek Rebuck home"><img data-logo data-logo-dark="dr-logo-dark-bg.png" data-logo-light="dr-logo-light-bg.png" src="dr-logo-dark-bg.png" alt=""></a>
+      <ul class="nav-links" id="primary-links">
+        <li><a href="work.html">Work</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html" aria-current="page">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="theme-toggle" data-theme-toggle type="button" aria-label="Use dark theme"><span aria-hidden="true">◐</span></button>
+        <button class="menu-btn" data-menu type="button" aria-expanded="false" aria-controls="primary-links" aria-label="Open navigation menu"><span class="hamburger" aria-hidden="true"><span></span><span></span><span></span></span></button>
+      </div>
+    </nav>
+  </div>
+</header>
+<main id="main">
+  <section class="page-hero contact-hero first-content-block" data-header-bg="darkgreen">
+    <div class="shell narrow-hero">
+      <h1>Contact</h1>
+      <p>I’m not actively looking for freelance work, but I’m always open to an interesting project, a design conversation or a reason to connect.</p>
+    </div>
+  </section>
+  <section class="section contact-main" data-header-bg="beige">
+    <div class="shell contact-page-layout">
+      <div class="contact-intro">
+        <h2>Get in touch</h2>
+        <p>Email is usually the easiest way to reach me. You can also find me on LinkedIn.</p>
+        <p><strong>Email</strong><br><a href="mailto:derekrebuck@gmail.com">derekrebuck@gmail.com</a></p>
+        <p><strong>LinkedIn</strong><br><a href="https://www.linkedin.com/in/derekrebuck/" rel="me">linkedin.com/in/derekrebuck</a></p>
+      </div>
+      <form class="form" action="mailto:derekrebuck@gmail.com" method="post" enctype="text/plain">
+        <div><label for="name">Name</label><input id="name" name="Name" autocomplete="name" required></div>
+        <div><label for="email">Email</label><input id="email" name="Email" type="email" autocomplete="email" required></div>
+        <div><label for="message">Message</label><textarea id="message" name="Message" required></textarea></div>
+        <button class="button crimson-button" type="submit">Send message</button>
+        <p class="form-note">For this prototype, the form opens your email app. Before launch, it can be connected to a static form service so messages send directly from the site.</p>
+      </form>
+    </div>
+  </section>
+</main>
+<footer class="site-footer" data-header-bg="black">
+  <div class="shell footer-inner">
+    <img src="dr-logo-dark-bg.png" alt="Derek Rebuck, Visual Designer">
+    <div class="footer-small">Contact<br>© 2026 Derek Rebuck</div>
+  </div>
+</footer>
+<script src="js/site.js"></script>
+</body>
+</html>
