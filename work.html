@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Explore Derek Rebuck's work across branding, web, visual communications, information design, video, photography and fine art.">
+  <title>Work | Derek Rebuck</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script>try{const t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<header class="site-header" data-site-header>
+  <div class="shell">
+    <nav class="nav" aria-label="Primary">
+      <a class="brand" href="index.html" aria-label="Derek Rebuck home"><img data-logo data-logo-dark="dr-logo-dark-bg.png" data-logo-light="dr-logo-light-bg.png" src="dr-logo-dark-bg.png" alt=""></a>
+      <ul class="nav-links" id="primary-links"><li><a href="work.html" aria-current="page">Work</a></li><li><a href="about.html">About</a></li><li data-section-toggle="services" hidden><a href="services.html">Services</a></li><li><a href="contact.html">Contact</a></li></ul>
+      <div class="nav-actions">
+        <button class="theme-toggle" data-theme-toggle type="button" aria-label="Use dark theme"><span aria-hidden="true">◐</span></button>
+        <button class="menu-btn" data-menu type="button" aria-expanded="false" aria-controls="primary-links" aria-label="Open navigation menu"><span class="hamburger" aria-hidden="true"><span></span><span></span><span></span></span></button>
+      </div>
+    </nav>
+  </div>
+</header>
+<main id="main">
+  <section class="page-hero hero-divider" data-header-bg="darkgreen">
+    <div class="shell narrow-hero">
+      <h1>Design in practice</h1>
+      <p>My work spans different disciplines, but the goal stays consistent: understand the problem, choose the right format and make the result clear, useful and visually considered.</p>
+    </div>
+  </section>
+  <section class="section discipline-section" data-header-bg="beige">
+    <div class="shell">
+      <div class="section-heading-row discipline-heading">
+        <div>
+          <h2>Explore by discipline</h2>
+          <p class="section-intro">Each section brings together related work from different roles, organizations and projects.</p>
+        </div>
+      </div>
+      <div class="discipline-grid" data-category-grid></div>
+    </div>
+  </section>
+</main>
+<footer class="site-footer" data-header-bg="black">
+  <div class="shell footer-inner">
+    <img src="dr-logo-dark-bg.png" alt="Derek Rebuck, Visual Designer">
+    <div class="footer-links">
+      <a href="admin/" class="footer-admin">Admin</a>
+      <div class="footer-small">Work<br>© 2026 Derek Rebuck</div>
+    </div>
+  </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-config.js"></script>
+<script src="js/content-fallback.js"></script>
+<script src="js/public-content.js"></script>
+<script src="js/site.js"></script>
+</body>
+</html>

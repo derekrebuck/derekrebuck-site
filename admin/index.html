@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Portfolio Admin | Derek Rebuck</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body class="admin-body">
+<a class="skip-link" href="#admin-main">Skip to admin content</a>
+<header class="admin-header">
+  <div class="shell admin-header-inner">
+    <a class="admin-brand" href="../index.html"><img src="../dr-logo-dark-bg.png" alt="Derek Rebuck"></a>
+    <a class="admin-back" href="../index.html">View site</a>
+  </div>
+</header>
+<main id="admin-main" class="admin-main">
+  <section class="admin-login" data-admin-login>
+    <div class="admin-card login-card">
+      <p class="admin-eyebrow">Portfolio admin</p>
+      <h1>Sign in</h1>
+      <p>Manage visible sections, work categories and portfolio projects.</p>
+      <form data-login-form class="admin-form">
+        <label for="admin-email">Email</label>
+        <input id="admin-email" name="email" type="email" autocomplete="username" value="Derekrebuck@gmail.com" required>
+        <label for="admin-password">Password</label>
+        <input id="admin-password" name="password" type="password" autocomplete="current-password" required>
+        <button class="button primary" type="submit">Sign in</button>
+        <p class="admin-status" data-login-status role="status"></p>
+      </form>
+      <div class="admin-setup-note" data-config-note hidden>
+        <strong>Supabase is not configured yet.</strong>
+        <p>Follow <code>SETUP-SUPABASE.md</code>, then add your project URL and publishable key to <code>js/supabase-config.js</code>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="admin-dashboard" data-admin-dashboard hidden>
+    <div class="shell admin-dashboard-shell">
+      <div class="admin-dashboard-heading">
+        <div>
+          <p class="admin-eyebrow">Portfolio admin</p>
+          <h1>Content dashboard</h1>
+          <p data-admin-user></p>
+        </div>
+        <button class="button admin-signout" type="button" data-signout>Sign out</button>
+      </div>
+
+      <nav class="admin-tabs" aria-label="Admin sections">
+        <button type="button" class="admin-tab is-active" data-tab="sections">Visibility</button>
+        <button type="button" class="admin-tab" data-tab="categories">Work categories</button>
+        <button type="button" class="admin-tab" data-tab="projects">Projects</button>
+      </nav>
+
+      <div class="admin-panel is-active" data-panel="sections">
+        <div class="admin-panel-heading">
+          <div><h2>Visibility</h2><p>Turn optional site content on or off without editing HTML.</p></div>
+        </div>
+        <div class="toggle-list" data-section-list></div>
+      </div>
+
+      <div class="admin-panel" data-panel="categories" hidden>
+        <div class="admin-panel-heading">
+          <div><h2>Work categories</h2><p>These are the public disciplines shown on the Work page.</p></div>
+          <button class="button primary" type="button" data-new-category>Add category</button>
+        </div>
+        <div class="admin-split">
+          <div class="admin-list" data-category-list></div>
+          <form class="admin-card admin-form editor-form" data-category-form hidden>
+            <input type="hidden" name="id">
+            <h3 data-category-form-title>Edit category</h3>
+            <label>Title<input name="title" required></label>
+            <label>Slug<input name="slug" required pattern="[a-z0-9-]+"></label>
+            <label>Description<textarea name="description" rows="4"></textarea></label>
+            <label>Image path or HTTPS URL<input name="image_url"></label>
+            <label>Accent
+              <select name="accent">
+                <option value="green">Green</option>
+                <option value="yellow">Yellow</option>
+                <option value="blue">Blue</option>
+                <option value="crimson">Crimson</option>
+              </select>
+            </label>
+            <label>Sort order<input name="sort_order" type="number" value="0"></label>
+            <label class="check-row"><input name="published" type="checkbox" checked> Published</label>
+            <div class="editor-actions">
+              <button class="button primary" type="submit">Save category</button>
+              <button class="button" type="button" data-cancel-category>Cancel</button>
+              <button class="button danger" type="button" data-delete-category hidden>Delete</button>
+            </div>
+            <p class="admin-status" data-category-status role="status"></p>
+          </form>
+        </div>
+      </div>
+
+      <div class="admin-panel" data-panel="projects" hidden>
+        <div class="admin-panel-heading">
+          <div><h2>Projects</h2><p>Add, remove, feature, publish and assign projects to disciplines.</p></div>
+          <button class="button primary" type="button" data-new-project>Add project</button>
+        </div>
+        <div class="admin-split">
+          <div class="admin-list" data-project-list></div>
+          <form class="admin-card admin-form editor-form" data-project-form hidden>
+            <input type="hidden" name="id">
+            <h3 data-project-form-title>Edit project</h3>
+            <label>Title<input name="title" required></label>
+            <label>Slug<input name="slug" required pattern="[a-z0-9-]+"></label>
+            <label>Category<select name="category_slug" required data-project-category></select></label>
+            <label>Organization / client<input name="organization"></label>
+            <label>Summary<textarea name="summary" rows="5"></textarea></label>
+            <label>Image path or HTTPS URL<input name="image_url"></label>
+            <label>Year<input name="year"></label>
+            <label>Sort order<input name="sort_order" type="number" value="0"></label>
+            <label class="check-row"><input name="featured" type="checkbox"> Featured on homepage</label>
+            <label class="check-row"><input name="published" type="checkbox" checked> Published</label>
+            <div class="editor-actions">
+              <button class="button primary" type="submit">Save project</button>
+              <button class="button" type="button" data-cancel-project>Cancel</button>
+              <button class="button danger" type="button" data-delete-project hidden>Delete</button>
+            </div>
+            <p class="admin-status" data-project-status role="status"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../js/supabase-config.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>
